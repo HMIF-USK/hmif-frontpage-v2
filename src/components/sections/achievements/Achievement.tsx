@@ -20,7 +20,7 @@ const Achievements: React.FC = () => {
           <OrbitSvg />
         </div>
 
-        <div className="absolute z-8 ">
+        <div className="absolute z-8  translate-y-[10%] scale-x-110 ">
           <ParticelSvg />
         </div>
 

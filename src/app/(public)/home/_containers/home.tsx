@@ -3,6 +3,7 @@ import { themeConfig } from '@/configs/theme.config';
 import NavLayout from '@/core/layouts/nav.layout';
 import { useTheme } from '@/core/providers/theme.provider';
 import Achievements from '@/components/sections/achievements/Achievement';
+import Events from '@/components/sections/event/Event';
 
 export default function ContainerHome() {
   const { theme } = useTheme();
@@ -10,7 +11,8 @@ export default function ContainerHome() {
   return (
     <NavLayout>
       <main className={`container mx-auto bg-[${themeConfig[theme].primary.background}]`}>
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-full">
+          <Events />
           <Achievements />
         </div>
       </main>
