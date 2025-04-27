@@ -2,12 +2,11 @@
   /* Import gambar */
 }
 import Image from "next/image";
-import logoAtas from "@/components/svg/asset/logoAtas.svg";
-import logoBawah from "@/components/svg/asset/logoBawah.svg";
-import logoKanan from "@/components/svg/asset/logoKananBawah.svg";
+import logoAtas from "@/components/asset/logoAtas.svg";
+import logoBawah from "@/components/asset/logoBawah.svg";
+import logoKanan from "@/components/asset/logoKananBawah.svg";
 
 import border from "@/public/svg/achievements/1.svg";
-import Light from "@/components/svg/achievements/Light";
 import Particel from "@/public/svg/achievements/Particel.svg";
 import { boardSlots, LampuSlots } from "@/components/helper/Slot";
 import { BoardData, LampuData, LogoData } from "@/data";
@@ -21,8 +20,15 @@ import DepartmentList from "@/components/cards/departmentCard/DepartmentList";
 
 const Home = () => {
   return (
-    <main className="min-h-screen bg-[#0D0C1D] flex justify-center items-center p-8">
-      <div className="w-full max-w-4xl">
+    <main className="w-screen h-screen relative bg-[#0D0C1D] flex justify-center items-center  ">
+      
+      <div className="gambar">
+        <Image src={logoAtas} alt="Logo Atas" className="absolute w-50 top-0 left-0 " />
+        <Image src={logoBawah} alt="Logo Bawah" className="absolute w-70 bottom-0 left-0 " />
+        <Image src={logoKanan} alt="Logo Kanan" className="absolute w-70 bottom-0 right-0 " />
+      </div>
+
+      <div className="w-[80%] h-[60%] z-1">
         <DepartmentList />
       </div>
     </main>
