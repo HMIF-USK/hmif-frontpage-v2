@@ -1,13 +1,16 @@
-import { BoardTypes, LampuType, LogoType } from '../types';
+//  {{{{{{{{{{{   Contoh    }}}}}}}}}}}
 
-export interface BoardTypesProps {
-  data: BoardTypes;
-}
 
-export interface LampuTypeProps {
-  data: LampuType;
-}
+// import { BoardTypes, LampuType, LogoType } from '../types';
 
-export interface LogoTypeProps {
-  data: LogoType;
-}
+// export interface BoardTypesProps {
+//   data: BoardTypes;
+// }
+
+// export interface LampuTypeProps {
+//   data: LampuType;
+// }
+
+// export interface LogoTypeProps {
+//   data: LogoType;
+// }
