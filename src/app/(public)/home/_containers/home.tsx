@@ -6,13 +6,13 @@
 
  export default function ContainerHome() {   const { theme } = useTheme();
    return (
-     <NavLayout>
+    
        <main className={`container mx-auto bg-[${themeConfig[theme].primary.background}]`}>
-         <div className="flex flex-col items-center justify-center h-full">
+         <div className="flex flex-col items-center justify-center h-full ">
            <Department_list />
          </div>
        </main>
-     </NavLayout>
+    
    );
  }
 
