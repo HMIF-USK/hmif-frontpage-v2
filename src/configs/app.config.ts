@@ -1,3 +1,4 @@
+import { title } from 'process';
 import React from 'react';
 
 interface AppConfig {
@@ -94,3 +95,27 @@ export const navigationMenuConfig: NavigationMenuConfig = {
     },
   ],
 };
+
+export interface CardInforClubType {
+  title: string;
+  desk: string;
+}
+
+export const CardInforClubData: CardInforClubType[] = [
+  {
+    title: 'Rekayasa Perangkat Lunak',
+    desk: "Whether you've got a design ready to go or need us to whip one up, we'll tackle the development part with unmatched expertise and precision.",
+  },
+  {
+    title: 'Internet of Things',
+    desk: 'We blend creativity and strategy to reflect your brand’s essence, ensuring a memorable and cohesive presence across all touchpoints. Let your brand shine and leave a lasting impression.',
+  },
+  {
+    title: 'Data Mining',
+    desk: "We're here to join forces with you, uncovering your goals, target audience, and the perfect recipe for a design that stands out from the crowd.",
+  },
+];
+
+export interface CardInforClubTypeProps {
+  data: CardInforClubType;
+}
