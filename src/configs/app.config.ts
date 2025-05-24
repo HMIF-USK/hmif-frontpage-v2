@@ -108,7 +108,7 @@ export const CardInforClubData: CardInforClubType[] = [
   },
   {
     title: 'Internet of Things',
-    desk: 'We blend creativity and strategy to reflect your brand’s essence, ensuring a memorable and cohesive presence across all touchpoints. Let your brand shine and leave a lasting impression.',
+    desk: 'We blend creativity and strategy to reflect your brands essence, ensuring a memorable and cohesive presence across all touchpoints. Let your brand shine and leave a lasting impression.',
   },
   {
     title: 'Data Mining',
@@ -118,4 +118,5 @@ export const CardInforClubData: CardInforClubType[] = [
 
 export interface CardInforClubTypeProps {
   data: CardInforClubType;
+  index?: number;
 }
