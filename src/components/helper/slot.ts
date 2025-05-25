@@ -15,3 +15,15 @@ export const LampuSlots = [
   { top: '800px', left: '1213px' },
   { top: '1039px', left: '1050px' },
 ];
+
+export const CardEventSlots = [
+  '-rotate-x-15 -rotate-y-30 -translate-y-7 ',
+  '',
+  'rotate-x-15 -rotate-y-30 -translate-y-7 ',
+];
+
+export const CardEventSlotsShadows = [
+  'rotate-x-[20deg] -rotate-y-[30deg] -translate-x-[20px] -translate-y-[80px] z-[1]',
+  '-translate-y-[100px] z-[1]',
+  '-rotate-x-[20deg] -rotate-y-[30deg]  translate-x-[20px] -translate-y-[80px] z-[1]',
+];
