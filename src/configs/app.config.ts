@@ -123,7 +123,7 @@ export const BoardData: BoardTypes[] = [
   {
     title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
     date: '2027',
-    image: '',
+    image: '2',
   },
   {
     title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
@@ -133,7 +133,7 @@ export const BoardData: BoardTypes[] = [
   {
     title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
     date: '2029',
-    image: '',
+    image: '2',
   },
 ];
 

@@ -48,7 +48,7 @@ const Events: React.FC = () => {
             EVENT
           </h1>
 
-          <div className="absolute inset-0 scale-107 left-55 top-60 z-2">
+          <div className="absolute inset-0 left-5 top-40 z-2 scale-83">
             <CapsEvent />
           </div>
 

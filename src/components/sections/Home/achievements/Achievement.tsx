@@ -17,7 +17,7 @@ const Achievements: React.FC = () => {
           <Light />
         </div>
 
-        <div className="absolute z-9 translate-y-[10%]">
+        <div className="absolute z-9 translate-y-[7%] scale-80">
           <OrbitSvg />
         </div>
 
@@ -42,7 +42,7 @@ const Achievements: React.FC = () => {
             return (
               <div
                 key={index}
-                className="absolute"
+                className="absolute scale-85"
                 style={{
                   top: slot.top,
                   left: slot.left,
