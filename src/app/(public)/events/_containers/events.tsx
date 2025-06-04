@@ -2,7 +2,6 @@
 import { themeConfig } from '@/configs/theme.config';
 import NavLayout from '@/core/layouts/nav.layout';
 import { useTheme } from '@/core/providers/theme.provider';
-import EventsComponents from '@/components/sections/Events/Events';
 
 export default function ContainerEvent() {
   const { theme } = useTheme();
@@ -11,7 +10,7 @@ export default function ContainerEvent() {
     <NavLayout>
       <main className={`container mx-auto bg-[${themeConfig[theme].primary.background}]`}>
         <div className="flex flex-col items-center justify-center h-full">
-          <EventsComponents />
+          {/* <EventsComponents /> */}
         </div>
       </main>
     </NavLayout>
