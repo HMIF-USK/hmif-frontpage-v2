@@ -1,6 +1,5 @@
 import { MoveRight } from 'lucide-react';
 import { CardEventTypeProps } from '@/components/props';
-import { CardEventSlots } from '@/components/helper/slot';
 
 const CardEvent: React.FC<CardEventTypeProps> = ({ activeIndex, index, data }) => {
   const isActive = index === 1;
