@@ -2,18 +2,16 @@
 import { themeConfig } from '@/configs/theme.config';
 import NavLayout from '@/core/layouts/nav.layout';
 import { useTheme } from '@/core/providers/theme.provider';
-import Achievements from '@/components/sections/Home/achievements/Achievement';
-import Events from '@/components/sections/Home/event/Event';
+import EventsComponents from '@/core/section/Events/Events';
 
-export default function ContainerHome() {
+export default function ContainerEvent() {
   const { theme } = useTheme();
 
   return (
     <NavLayout>
       <main className={`container mx-auto bg-[${themeConfig[theme].primary.background}]`}>
         <div className="flex flex-col items-center justify-center h-full">
-          <Events />
-          <Achievements />
+          <EventsComponents />
         </div>
       </main>
     </NavLayout>

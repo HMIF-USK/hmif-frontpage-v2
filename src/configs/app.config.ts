@@ -1,4 +1,7 @@
 import React from 'react';
+import LampuSvg from '@/components/svg/achievements/lampu';
+import Logo from '@/components/svg/achievements/logofix';
+import { title } from 'process';
 
 interface AppConfig {
   name: string;
@@ -94,3 +97,119 @@ export const navigationMenuConfig: NavigationMenuConfig = {
     },
   ],
 };
+
+export interface BoardTypes {
+  title: string;
+  date: string;
+  image?: any;
+}
+
+export const BoardData: BoardTypes[] = [
+  {
+    title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
+    date: '2024',
+    image: '',
+  },
+  {
+    title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
+    date: '2025',
+    image: '',
+  },
+  {
+    title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
+    date: '2026',
+    image: '2',
+  },
+  {
+    title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
+    date: '2027',
+    image: '2',
+  },
+  {
+    title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
+    date: '2028',
+    image: '',
+  },
+  {
+    title: 'Himpunan dan Proker Terbaik FMIPA Awards 2024',
+    date: '2029',
+    image: '2',
+  },
+];
+
+export interface LampuType {
+  image: any;
+}
+
+export const LampuData: LampuType[] = [
+  {
+    image: LampuSvg,
+  },
+  {
+    image: LampuSvg,
+  },
+  {
+    image: LampuSvg,
+  },
+  {
+    image: LampuSvg,
+  },
+  {
+    image: LampuSvg,
+  },
+  {
+    image: LampuSvg,
+  },
+];
+
+export interface LogoType {
+  icon: any;
+}
+
+export const LogoData: LogoType[] = [
+  {
+    icon: Logo,
+  },
+  {
+    icon: Logo,
+  },
+];
+
+export interface CardEventType {
+  title: string;
+  desc: string;
+  image?: string;
+}
+
+export const CardEventData: CardEventType[] = [
+  {
+    title: 'Diki',
+    desc: '2020',
+    image: '',
+  },
+  {
+    title: 'Dika',
+    desc: '2020',
+    image: '',
+  },
+  {
+    title: 'Diku',
+    desc: '2020',
+    image: '',
+  },
+  {
+    title: 'Diko',
+    desc: '2020',
+    image: '',
+  },
+  {
+    title: 'dikt',
+    desc: '2020',
+    image: '',
+  },
+  {
+    title: 'dikg',
+    desc: '2020',
+    image: '',
+  },
+];

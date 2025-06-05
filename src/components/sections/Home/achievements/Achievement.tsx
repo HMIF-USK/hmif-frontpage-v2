@@ -1,5 +1,5 @@
 'use client';
-import { LampuData, BoardData, LogoData } from '@/components/data';
+import { LampuData, BoardData, LogoData } from '@/configs/app.config';
 import { LampuSlots, boardSlots } from '@/components/helper/slot';
 import Logo from '@/components/cards/achievements/Logo';
 import Board from '@/components/cards/achievements/Board';
@@ -8,19 +8,20 @@ import Light from '@/components/svg/achievements/light';
 import OrbitSvg from '@/components/svg/achievements/orbit';
 import ParticelSvg from '@/components/svg/achievements/Particel';
 import Lampu from '@/components/cards/achievements/Lampu';
+
 const Achievements: React.FC = () => {
   return (
-    <div className="relative h-scren w-screen">
+    <div className="relative h-full w-screen">
       <div className='className=" min-w-full h-[115vh] scale-x-[110%] flex justify-center items-center bg-[#0E0A17] rounded-b-full rounded-t-full translate-y-[5%] mt-[8vh]'>
         <div className="absolute inset-0 scale-70 translate-y-[-25%] z-1 scale-x-[100%] ">
           <Light />
         </div>
 
-        <div className="absolute z-9 translate-y-[10%]">
+        <div className="absolute z-9 translate-y-[7%] scale-80">
           <OrbitSvg />
         </div>
 
-        <div className="absolute z-8 ">
+        <div className="absolute z-8  translate-y-[10%] scale-x-110 ">
           <ParticelSvg />
         </div>
 
@@ -29,8 +30,8 @@ const Achievements: React.FC = () => {
             <h1 className="font-bold text-center text-white md:text-[3rem] md:w-[19vw] mb-2">
               Achievements Board
             </h1>
-            <div className="border-1 bg-gradient-to-b from-[#140F2A] to-[#332A55] rounded-3xl font-light text-white p-2">
-              <button className=" ">Selengkapnya</button>
+            <div className="border-1 bg-gradient-to-b from-[#140F2A] to-[#332A55] rounded-3xl font-light text-white p-3">
+              <button className=" font-bold">Selengkapnya</button>
             </div>
           </div>
         </div>
@@ -41,7 +42,7 @@ const Achievements: React.FC = () => {
             return (
               <div
                 key={index}
-                className="absolute"
+                className="absolute scale-85"
                 style={{
                   top: slot.top,
                   left: slot.left,
@@ -54,7 +55,7 @@ const Achievements: React.FC = () => {
           })}
         </div>
 
-        <div className="absolute md:h-full md:w-full z-14">
+        <div className="absolute md:h-full md:w-full z-101">
           {LampuData.map((item, index) => {
             const slot = LampuSlots[index];
             return (
@@ -75,7 +76,7 @@ const Achievements: React.FC = () => {
 
         <div className=" relative flex justify-center top-[100vh] w-full border-1 z-10 h-[10vh] items-center overflow-hidden">
           <Marquee direction="left">
-            <div className="shadow-md">
+            <div className="shadow-md flex ">
               {LogoData.map((item, index) => (
                 <Logo key={index} />
               ))}
