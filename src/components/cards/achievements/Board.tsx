@@ -1,4 +1,3 @@
-// components/Board.tsx
 import { BoardTypesProps } from '@/components/props/index';
 import { CircleArrowOutUpRight } from 'lucide-react';
 import Link from 'next/link';
