@@ -89,7 +89,7 @@ export const themeConfig: ThemeConfig = {
     ring: 'rgba(145, 29, 236, 0.3)',
   },
   dark: {
-    background: '#1A1A1A',
+    background: '#0E0A17',
     foreground: '#F5EAFF',
     card: {
       background: '#2A2A2A',
@@ -100,7 +100,7 @@ export const themeConfig: ThemeConfig = {
       foreground: '#F5EAFF',
     },
     primary: {
-      background: '#911DEC',
+      background: '#0E0A17',
       foreground: '#F5EAFF',
     },
     secondary: {

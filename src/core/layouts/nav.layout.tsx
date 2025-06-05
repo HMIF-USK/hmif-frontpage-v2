@@ -4,8 +4,8 @@ import AppHeader from '../components/app-header';
 export default function NavLayout({ children }: { children: React.ReactNode }) {
   return (
     <main className="flex flex-col min-h-screen">
-      <AppHeader />
-      <div className="flex-1">{children}</div>
+      {/* <AppHeader /> */}
+      <div className="w-screen">{children}</div>
       {/* <AppFooter /> */}
     </main>
   );
