@@ -9,8 +9,8 @@ export default function ContainerEvent() {
 
   return (
     <NavLayout>
-      <main className={`container mx-auto bg-[${themeConfig[theme].primary.background}]`}>
-        <div className="flex flex-col items-center justify-center h-full">
+      <main className={`w-full bg-[${themeConfig[theme].primary.background}]`}>
+        <div className="flex flex-col items-center justify-center w-full">
           <EventsComponents />
         </div>
       </main>

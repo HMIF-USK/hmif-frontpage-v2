@@ -48,7 +48,7 @@
 
   /* Base colors from theme */
   --background: #f5eaff;
-  --foreground: #000000;
+  --foreground: #0e0a17;
 
   /* Card */
   --card: #ffffff;
@@ -110,7 +110,7 @@
 }
 
 .dark {
-  --background: #1a1a1a;
+  --background: #0e0a17;
   --foreground: #f5eaff;
 
   /* Card */

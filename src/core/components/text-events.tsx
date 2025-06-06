@@ -1,8 +1,7 @@
 const TextEventComponent: React.FC = () => {
   return (
     <svg
-      width="1196"
-      height="231"
+      className="w-full h-auto"
       viewBox="0 0 1196 231"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
