@@ -27,4 +27,3 @@ export const CardEventSlotsShadows = [
   '-translate-y-[100px] z-[1]',
   '-rotate-x-[20deg] -rotate-y-[30deg]  translate-x-[20px] -translate-y-[80px] z-[1]',
 ];
-

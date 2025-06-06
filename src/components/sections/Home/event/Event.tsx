@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { CardEventSlots, CardEventSlotsShadows } from '@/components/helper/slot';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Events: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -17,6 +18,8 @@ const Events: React.FC = () => {
     align: 'center',
     dragFree: true,
   });
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -33,7 +36,7 @@ const Events: React.FC = () => {
 
   return (
     <main className="relative h-full w-screen ">
-      <div className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+      <div className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden p-8">
         <div className="absolute inset-0 flex items-center justify-center scale-[2] z-0 inset-shadow-2xs translate-y-[30px] border-b-10 ">
           <BackgroundEvent />
         </div>
@@ -44,11 +47,11 @@ const Events: React.FC = () => {
             <h1 className="font-bold text-white">THE LATEST</h1>
           </div>
 
-          <h1 className="mt-2 text-[10rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-none text-center">
+          <h1 className="mt-1 sm:mt-2 md:mt-3 text-8xl sm:text-9xl md:text-10xl lg:text-11xl xl:text-12xl font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-tight sm:leading-snug md:leading-normal text-center">
             EVENT
           </h1>
 
-          <div className="absolute inset-0 left-5 top-40 z-2 scale-83">
+          <div className="absolute inset-x-0 inset-y-0 left-[5%] top-[15vh] sm:top-[20vh] md:top-[25vh] z-[2] scale-75 sm:scale-85 md:scale-90 lg:scale-100">
             <CapsEvent />
           </div>
 

@@ -18,7 +18,7 @@ const EventsComponents: React.FC = () => {
         <div className="my-8 md:my-12 flex justify-center items-center w-full z-2">
           <TextEventComponent />
         </div>
-        <div className="w-full flex flex-col items-center gap-8 z-2">
+        <div className="w-full flex flex-col items-center gap-8 z-2 ">
           {eventCardData.map((items, key) => (
             <EventCardContents key={key} data={items} />
           ))}
