@@ -1,8 +1,7 @@
 const backdropEvents: React.FC = () => {
   return (
     <svg
-      width="1455"
-      height="2316"
+      className="w-full h-auto"
       viewBox="0 0 1455 2316"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
