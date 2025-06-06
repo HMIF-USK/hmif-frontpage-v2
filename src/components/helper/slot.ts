@@ -1,19 +1,20 @@
 export const boardSlots = [
-  { top: '150px', left: '900px' },
-  { top: '260px', left: '460px' },
-  { top: '430px', left: '1100px' },
-  { top: '800px', left: '1050px' },
-  { top: '900px', left: '650px' },
-  { top: '600px', left: '400px' },
+  { top: '20%', left: '63%' },
+
+  { top: '30%', left: '28%' },
+  { top: '50%', left: '75%' },
+  { top: '88%', left: '70%' },
+  { top: '100%', left: '40%' },
+  { top: '63%', left: '25%' },
 ];
 
 export const LampuSlots = [
-  { top: '300px', left: '950px' },
-  { top: '120px', left: '670px' },
-  { top: '380px', left: '310px' },
-  { top: '800px', left: '500px' },
-  { top: '630px', left: '1030px' },
-  { top: '890px', left: '850px' },
+  { top: '35%', left: '65%' },
+  { top: '16%', left: '43%' },
+  { top: '45%', left: '23%' },
+  { top: '85%', left: '31%' },
+  { top: '70%', left: '68%' },
+  { top: '97%', left: '58%' },
 ];
 
 export const CardEventSlots = [

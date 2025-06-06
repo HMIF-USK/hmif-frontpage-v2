@@ -14,8 +14,6 @@ export interface LogoTypeProps {
 }
 
 export interface CardEventTypeProps {
-  index: number;
-  activeIndex: number;
   data: CardEventType;
 }
 

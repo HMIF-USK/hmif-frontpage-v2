@@ -1,4 +1,5 @@
 'use client';
+import 'swiper/css';
 import Star from '@/components/svg/events/start';
 import BackgroundEvent from '@/components/svg/events/background';
 import CardEvent from '@/components/cards/event/Card';
@@ -9,10 +10,11 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { CardEventSlots, CardEventSlotsShadows } from '@/components/helper/slot';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import CardEventMobile from '@/components/cards/event/CardMobile';
 
 const Events: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [datas] = useState<any>(CardEventData);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'center',
@@ -51,64 +53,98 @@ const Events: React.FC = () => {
             EVENT
           </h1>
 
-          <div className="absolute inset-x-0 inset-y-0 left-[5%] top-[15vh] sm:top-[20vh] md:top-[25vh] z-[2] scale-75 sm:scale-85 md:scale-90 lg:scale-100">
-            <CapsEvent />
-          </div>
+          {!isMobile && (
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 sm:top-[20vh] md:top-[25vh] z-[2] scale-85 sm:scale-90 md:scale-100">
+              <CapsEvent />
+            </div>
+          )}
 
           <div className="w-[100vw] h-[100vh] flex justify-center items-center relative pt-[3rem] ">
-            <div className="flex absolute z-10 bottom-130 left-40">
-              <button
-                onClick={() => emblaApi?.scrollPrev()}
-                className="text-white border rounded-full p-5 bg-gradient-to-r from-[#493582] via-[#FFFFFF1A] to-[#493582] hover:bg-opacity-80 transition-all"
-              >
-                <ArrowLeft />
-              </button>
-            </div>
-            <div className="relative w-[60%]">
-              <div className="absolute inset-0 flex justify-between z-[1] top-13 w-full">
-                {datas.slice(3, 6).map((data: any, i: any) => {
-                  const shadowIndex = (currentIndex + i) % 3;
-                  return (
-                    <div
-                      key={`Shadow-${i}`}
-                      className={`w-[20vw] h-[40vh] rounded-xl backdrop-blur-2xl  ease-in-out ${CardEventSlotsShadows[shadowIndex]}`}
-                    >
-                      <div className="w-full h-full rounded-xl p-2 bg-[#393054] bg-gradient-to-b from-[#000000]/50 via-[#393054] to-[#393054]/70">
-                        <div className="flex-col p-2 opacity-50">
-                          <h1 className="font-semibold text-[2rem] text-white">{data.title}</h1>
-                          <h1 className="font-semibold text-white">{data.desc}</h1>
-                        </div>
-                        <div className="h-[20vh] bg-[#EBE8F5]/20 rounded-lg"></div>
-                      </div>
-                    </div>
-                  );
-                })}
+            {!isMobile && (
+              <div className="flex absolute z-10 bottom-1/2 left-40">
+                <button
+                  onClick={() => emblaApi?.scrollPrev()}
+                  className="text-white border rounded-full p-5 bg-gradient-to-r from-[#493582] via-[#FFFFFF1A] to-[#493582] hover:bg-opacity-80 transition-all"
+                >
+                  <ArrowLeft />
+                </button>
               </div>
+            )}
 
-              <div className="overflow-hidden relative z-[3]" ref={emblaRef}>
-                <div className="flex">
-                  {datas.slice(0, 3).map((data: any, i: any) => {
-                    const cardIndex = (currentIndex + i) % 3;
+            <div className="relative w-[60%]">
+              {!isMobile && (
+                <div className="absolute inset-0 flex justify-between z-[1] top-13 w-full">
+                  {CardEventData.slice(0, 3).map((items, key) => {
+                    const shadowIndex = (currentIndex + key) % 3;
+
                     return (
                       <div
-                        key={`main-${i}`}
-                        className={`w-[33.333%] h-[70vh] flex items-center justify-center  ease-in-out ${CardEventSlots[cardIndex]}`}
+                        key={key}
+                        className={`w-[20vw] h-[40vh] rounded-xl backdrop-blur-2xl  ease-in-out ${CardEventSlotsShadows[shadowIndex]}`}
                       >
-                        <CardEvent data={data} index={cardIndex} activeIndex={currentIndex} />
+                        <div className="w-full h-full rounded-xl p-2 bg-[#393054] bg-gradient-to-b from-[#000000]/50 via-[#393054] to-[#393054]/70">
+                          <div className="flex-col p-2 opacity-50">
+                            <h1 className="font-semibold text-[2rem] text-white">{items.title}</h1>
+                            <h1 className="font-semibold text-white">{items.desc}</h1>
+                          </div>
+                          <div className="h-[20vh] bg-[#EBE8F5]/20 rounded-lg"></div>
+                        </div>
                       </div>
                     );
                   })}
                 </div>
+              )}
+
+              <div className="overflow-hidden relative z-[3]" ref={emblaRef}>
+                {!isMobile && (
+                  <div className="flex">
+                    {CardEventData.slice(3, 6).map((items, key) => {
+                      const cardIndex = (currentIndex + key) % 3;
+
+                      return (
+                        <div
+                          className={`w-[33.333%] h-[70vh] flex items-center justify-center  ease-in-out ${CardEventSlots[cardIndex]}`}
+                          key={key}
+                        >
+                          <CardEvent data={items} key={key} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
-            <div className="flex absolute z-10 right-40 bottom-130">
-              <button
-                onClick={() => emblaApi?.scrollNext()}
-                className="text-white border rounded-full p-5 bg-gradient-to-b from-[#493582] via-[#FFFFFF1A] to-[#493582] hover:bg-opacity-80 transition-all"
-              >
-                <ArrowRight />
-              </button>
-            </div>
+
+            {isMobile && (
+              <main className="w-full p-4 ">
+                <Swiper
+                  spaceBetween={10}
+                  slidesPerView={1}
+                  onSlideChange={() => console.log('slide change')}
+                  onSwiper={(swiper) => console.log(swiper)}
+                >
+                  {CardEventData.map((items, key) => {
+                    console.log(`Data: ${items}`);
+                    return (
+                      <SwiperSlide key={key}>
+                        <CardEventMobile data={items} />
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </main>
+            )}
+
+            {!isMobile && (
+              <div className="flex absolute z-10 right-40 bottom-1/2">
+                <button
+                  onClick={() => emblaApi?.scrollNext()}
+                  className="text-white border rounded-full p-5 bg-gradient-to-b from-[#493582] via-[#FFFFFF1A] to-[#493582] hover:bg-opacity-80 transition-all"
+                >
+                  <ArrowRight />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
