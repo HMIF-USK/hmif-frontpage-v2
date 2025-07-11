@@ -16,16 +16,16 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   icons: {
-    icon: [{ url: '/images/logo.png', type: 'image/png' }, { url: '/favicon/favicon.ico' }],
-    shortcut: '/images/logo.png',
+    icon: [{ url: '/images/HMIF-No-BG.png', type: 'image/png' }, { url: '/favicon/favicon.ico' }],
+    shortcut: '/images/HMIF-No-BG.png',
     apple: [
-      { url: '/images/logo.png', type: 'image/png' },
-      { url: '/images/logo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/images/HMIF-No-BG.png', type: 'image/png' },
+      { url: '/images/HMIF-No-BG.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
       {
         rel: 'mask-icon',
-        url: '/images/logo.png',
+        url: '/images/HMIF-No-BG.png',
         color: '#000000',
       },
     ],
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: '/images/logo.png',
+        url: '/images/HMIF-No-BG.png',
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
-    images: ['/images/logo.png'],
+    images: ['/images/HMIF-No-BG.png'],
   },
   other: {
     'google-site-verification': 'your-verification-code',

@@ -1,111 +1,109 @@
 'use client';
 import Star from '@/components/svg/events/start';
-import BackgroundEvent from '@/components/svg/events/background';
-import CardEvent from '@/components/cards/event/Card';
-import CapsEvent from '@/components/svg/events/Caps';
-import { CardEventData } from '@/configs/app.config';
 import { useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { CardEventSlots, CardEventSlotsShadows } from '@/components/helper/slot';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import { CustomCSSProperties } from '@/types/customCSSProperties';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { ArrowRight } from 'lucide-react';
+import GridEvents from '@/components/svg/events/grid-event';
 const Events: React.FC = () => {
+  const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [datas] = useState<any>(CardEventData);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'center',
     dragFree: true,
   });
 
+  const [slidePerView, setSlidePerView] = useState<number>(isMobile ? 1 : 3);
+
+  const swiperEventStyle: CustomCSSProperties = !isMobile
+    ? {
+        '--swiper-pagination-color': '#393054',
+        '--swiper-pagination-bullet-inactive-color': '#fff',
+        '--swiper-pagination-bullet-inactive-opacity': '1',
+        '--swiper-pagination-bullet-horizontal-gap': '6px',
+        '--swiper-navigation-size': '45px',
+        '--swiper-navigation-color': '#ffffff',
+        '--swiper-navigation-sides-offset': '0px',
+      }
+    : {
+        '--swiper-pagination-color': '#393054',
+        '--swiper-pagination-bullet-inactive-color': '#fff',
+        '--swiper-pagination-bullet-inactive-opacity': '1',
+        '--swiper-pagination-bullet-horizontal-gap': '6px',
+        '--swiper-navigation-size': '45px',
+        '--swiper-navigation-color': 'transparent',
+        '--swiper-navigation-sides-offset': '0px',
+      };
+
   useEffect(() => {
-    if (!emblaApi) return;
-    const onSelect = () => {
-      const index = emblaApi.selectedScrollSnap();
-      setCurrentIndex(index);
-    };
-    emblaApi.on('select', onSelect);
-    onSelect();
-    return () => {
-      emblaApi.off('select', onSelect);
-    };
-  }, [emblaApi]);
+    setSlidePerView(isMobile ? 1 : 3);
+  }, [isMobile]);
 
   return (
-    <main className="relative h-full w-screen ">
-      <div className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center scale-[2] z-0 inset-shadow-2xs translate-y-[30px] border-b-10 ">
-          <BackgroundEvent />
+    <main className="w-screen bg-transparent">
+      <div className="relative z-0 min-h-screen w-full flex flex-col gap-20 items-center justify-center overflow-hidden py-10 bg-transparent">
+        <div className=" w-[80%] h-[50vh] absolute z-[-9] bg-[#5A189A] rounded-full -rotate-x-[10deg] opacity-[0.2] blur-3xl bottom-0"></div>
+        <div className="w-full absolute z-[-10] bottom-0">
+          <GridEvents />
         </div>
-
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-          <div className="flex items-center justify-center gap-2 bg-gradient-to-b from-[#493582] to-[#472F8C66] border rounded-full px-6 py-3">
+        <div className=" flex flex-col items-center">
+          <div className="flex items-center justify-center gap-1 sm:gap-2 bg-gradient-to-b from-[#493582] to-[#472F8C66] border border-white/20 rounded-full px-3 sm:px-4 md:px-6 py-1 sm:py-2 md:py-3 shadow-md">
+            {' '}
             <Star />
-            <h1 className="font-bold text-white">THE LATEST</h1>
+            <h1 className="font-bold text-white text-xs sm:text-sm md:text-base">
+              THE LATEST
+            </h1>{' '}
           </div>
 
-          <h1 className="mt-2 text-[10rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-none text-center">
+          <h1 className="mt-2 sm:mt-4 md:mt-6 text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-tight text-center">
             EVENT
           </h1>
+        </div>
 
-          <div className="absolute inset-0 left-5 top-40 z-2 scale-83">
-            <CapsEvent />
-          </div>
-
-          <div className="w-[100vw] h-[100vh] flex justify-center items-center relative pt-[3rem] ">
-            <div className="flex absolute z-10 bottom-130 left-40">
-              <button
-                onClick={() => emblaApi?.scrollPrev()}
-                className="text-white border rounded-full p-5 bg-gradient-to-r from-[#493582] via-[#FFFFFF1A] to-[#493582] hover:bg-opacity-80 transition-all"
-              >
-                <ArrowLeft />
-              </button>
-            </div>
-            <div className="relative w-[60%]">
-              <div className="absolute inset-0 flex justify-between z-[1] top-13 w-full">
-                {datas.slice(3, 6).map((data: any, i: any) => {
-                  const shadowIndex = (currentIndex + i) % 3;
-                  return (
+        <div className="w-full flex justify-center">
+          <div className=" w-[90%] md:w-[130%] xl:w-[90%]">
+            <Swiper
+              style={swiperEventStyle}
+              navigation
+              className="w-full flex justify-center"
+              spaceBetween={0}
+              slidesPerView={slidePerView}
+              loop={true}
+              pagination={{ clickable: true }}
+              onSlideChange={(swiper) => (
+                setCurrentIndex(swiper.realIndex === 5 ? -1 : swiper.realIndex),
+                console.log(swiper.realIndex)
+              )}
+              onSwiper={(swiper) => console.log(swiper)}
+              modules={[Navigation, Pagination]}
+              slidesPerGroup={1}
+            >
+              {Array.from({ length: 6 }).map((achievement: any, i: number) => {
+                return (
+                  <SwiperSlide key={i} className="mb-14 px-4 sm:px-6 lg:px-3">
                     <div
-                      key={`Shadow-${i}`}
-                      className={`w-[20vw] h-[40vh] rounded-xl backdrop-blur-2xl  ease-in-out ${CardEventSlotsShadows[shadowIndex]}`}
+                      className={`w-full h-[400px] lg:h-[550px] bg-[#393054]/30 backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start ${currentIndex + 1 !== i ? 'md:scale-[0.8]' : 'md:scale-x-[1.1]'} duration-300 border-[0.5px] border-white/20`}
                     >
-                      <div className="w-full h-full rounded-xl p-2 bg-[#393054] bg-gradient-to-b from-[#000000]/50 via-[#393054] to-[#393054]/70">
-                        <div className="flex-col p-2 opacity-50">
-                          <h1 className="font-semibold text-[2rem] text-white">{data.title}</h1>
-                          <h1 className="font-semibold text-white">{data.desc}</h1>
-                        </div>
-                        <div className="h-[20vh] bg-[#EBE8F5]/20 rounded-lg"></div>
+                      <div className=" w-full text-white">
+                        <h1 className=" mb-1 text-3xl font-bold">Detik</h1>
+                        <p className=" text-xl">Dedikasi Informatika</p>
+                      </div>
+
+                      <div className=" w-full h-[50%] bg-gray-500 rounded-2xl"></div>
+
+                      <div className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+                        <span>Selengkapnya</span>
+                        <ArrowRight />
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-
-              <div className="overflow-hidden relative z-[3]" ref={emblaRef}>
-                <div className="flex">
-                  {datas.slice(0, 3).map((data: any, i: any) => {
-                    const cardIndex = (currentIndex + i) % 3;
-                    return (
-                      <div
-                        key={`main-${i}`}
-                        className={`w-[33.333%] h-[70vh] flex items-center justify-center  ease-in-out ${CardEventSlots[cardIndex]}`}
-                      >
-                        <CardEvent data={data} index={cardIndex} activeIndex={currentIndex} />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-            <div className="flex absolute z-10 right-40 bottom-130">
-              <button
-                onClick={() => emblaApi?.scrollNext()}
-                className="text-white border rounded-full p-5 bg-gradient-to-b from-[#493582] via-[#FFFFFF1A] to-[#493582] hover:bg-opacity-80 transition-all"
-              >
-                <ArrowRight />
-              </button>
-            </div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           </div>
         </div>
       </div>

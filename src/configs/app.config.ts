@@ -1,6 +1,6 @@
 import React from 'react';
-import LampuSvg from '@/components/svg/achievements/lampu';
-import Logo from '@/components/svg/achievements/logofix';
+// import LampuSvg from '@/components/svg/achievements/lampu';
+// import Logo from '@/components/svg/achievements/logofix';
 import { title } from 'process';
 
 interface AppConfig {
@@ -41,7 +41,7 @@ interface AppConfig {
 export const appConfig: AppConfig = {
   name: 'App',
   description: 'App',
-  logo: '/images/logo.png',
+  logo: '/images/HMIF-No-BG.png',
   metadata: {
     title: 'App',
     description: 'App',
@@ -141,39 +141,39 @@ export interface LampuType {
   image: any;
 }
 
-export const LampuData: LampuType[] = [
-  {
-    image: LampuSvg,
-  },
-  {
-    image: LampuSvg,
-  },
-  {
-    image: LampuSvg,
-  },
-  {
-    image: LampuSvg,
-  },
-  {
-    image: LampuSvg,
-  },
-  {
-    image: LampuSvg,
-  },
-];
+// export const LampuData: LampuType[] = [
+//   {
+//     image: LampuSvg,
+//   },
+//   {
+//     image: LampuSvg,
+//   },
+//   {
+//     image: LampuSvg,
+//   },
+//   {
+//     image: LampuSvg,
+//   },
+//   {
+//     image: LampuSvg,
+//   },
+//   {
+//     image: LampuSvg,
+//   },
+// ];
 
 export interface LogoType {
   icon: any;
 }
 
-export const LogoData: LogoType[] = [
-  {
-    icon: Logo,
-  },
-  {
-    icon: Logo,
-  },
-];
+// export const LogoData: LogoType[] = [
+//   {
+//     icon: Logo,
+//   },
+//   {
+//     icon: Logo,
+//   },
+// ];
 
 export interface CardEventType {
   title: string;
