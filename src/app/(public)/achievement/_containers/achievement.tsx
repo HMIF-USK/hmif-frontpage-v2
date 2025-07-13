@@ -5,6 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { CustomCSSProperties } from '@/types/customCSSProperties';
 import NavLayout from '@/core/layouts/nav.layout';
+import SpringElementOne from '@/components/svg/achievements/spring-element-one';
+import SpringElementTwo from '@/components/svg/achievements/spring-element-two';
+import WaterElement from '@/components/svg/achievements/water-element';
 const ContainerAchievement: React.FC = () => {
   const swiperAchievementStyle: CustomCSSProperties = {
     '--swiper-pagination-color': '#393054',
@@ -439,7 +442,16 @@ const ContainerAchievement: React.FC = () => {
             </Swiper>
           </div>
           <div className="w-[87%] xl:w-[85%] h-[1px] bg-gradient-to-r from-transparent rounded-full via-[#E19FFF] to-transparent"></div>
-          <div className=" w-[87%] xl:w-[85%] flex flex-col items-center gap-10 lg:gap-20">
+          <div className=" w-[87%] xl:w-[85%] flex flex-col items-center gap-10 lg:gap-20 relative">
+            <div className="absolute z-[-5] w-[100px] md:w-[250px] left-[10%] top-[600px] md:top-[500px] animate-logo-10s">
+              <SpringElementOne />
+            </div>
+            <div className="absolute z-[-5] w-[100px] md:w-[250px] right-[5%] md:right-[0%] top-[1200px] md:top-[1100px] animate-logo-10s">
+              <SpringElementTwo />
+            </div>
+            <div className="absolute z-[-5] w-[250px] md:w-[350px] -left-[25%] md:-left-[15%] top-[2100px] animate-logo">
+              <WaterElement />
+            </div>
             {Array.from({ length: 6 }).map((item: any, i: number) => {
               return <AchievementPageCard key={i} index={i} />;
             })}
