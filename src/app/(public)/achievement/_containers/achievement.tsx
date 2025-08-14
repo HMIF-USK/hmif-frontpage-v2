@@ -8,6 +8,9 @@ import NavLayout from '@/core/layouts/nav.layout';
 import SpringElementOne from '@/components/svg/achievements/spring-element-one';
 import SpringElementTwo from '@/components/svg/achievements/spring-element-two';
 import WaterElement from '@/components/svg/achievements/water-element';
+import { achievements } from '@/data/achievement-list';
+import { IArticle } from '@/types/article.types';
+import Image from 'next/image';
 const ContainerAchievement: React.FC = () => {
   const swiperAchievementStyle: CustomCSSProperties = {
     '--swiper-pagination-color': '#393054',
@@ -432,10 +435,17 @@ const ContainerAchievement: React.FC = () => {
               modules={[Navigation, Pagination]}
               slidesPerGroup={1}
             >
-              {Array.from({ length: 6 }).map((achievement: any, i: number) => {
+              {achievements.map((achievement: IArticle, i: number) => {
                 return (
                   <SwiperSlide key={i} className="mb-14 bg-transparent">
-                    <div className=" w-full h-full  bg-gradient-to-r from-[#5B22BC] via-[#A8A0C2] to-[#5B22BC]"></div>
+                    <div className=" w-full h-full overflow-hidden relative">
+                      <Image
+                        src={achievement.imgUrl}
+                        alt={achievement.title}
+                        fill
+                        className="object-cover h-full w-full"
+                      />
+                    </div>
                   </SwiperSlide>
                 );
               })}
@@ -452,8 +462,8 @@ const ContainerAchievement: React.FC = () => {
             <div className="absolute z-[-5] w-[250px] md:w-[350px] -left-[25%] md:-left-[15%] top-[2100px] animate-logo">
               <WaterElement />
             </div>
-            {Array.from({ length: 6 }).map((item: any, i: number) => {
-              return <AchievementPageCard key={i} index={i} />;
+            {achievements.map((achievement: IArticle, i: number) => {
+              return <AchievementPageCard key={i} achievement={achievement} index={i} />;
             })}
           </div>
         </div>

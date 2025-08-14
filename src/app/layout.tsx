@@ -13,7 +13,7 @@ export { metadata };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={siteConfig.locale} suppressHydrationWarning>
-      <body>
+      <body className="font-montserrat">
         <ThemeProvider>
           <Providers>{children}</Providers>
         </ThemeProvider>

@@ -1,24 +1,43 @@
-import { MoveRight } from 'lucide-react';
-import { CardEventTypeProps } from '@/components/props';
+// import { MoveRight } from 'lucide-react';
+// import { CardEventTypeProps } from '@/components/props';
+
+import { IArticle } from '@/types/article.types';
+import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 interface ICardEvent {
+  data: IArticle;
   isLastItem: boolean;
 }
 
-const CardEvent: React.FC<ICardEvent> = ({ isLastItem }) => {
+const CardEvent: React.FC<ICardEvent> = ({ data, isLastItem }) => {
   return (
     <>
-      <div className="w-full flex flex-col gap-5 lg:gap-0 lg:flex-row lg:justify-between items-center lg:h-[600px] relative z-0">
+      <div className="w-full flex flex-col gap-5 lg:gap-0 lg:flex-row lg:justify-between items-center lg:h-[600px] relative z-0 group">
         <div
           className={`${!isLastItem ? 'h-[127%]' : 'h-full'}  w-1 border-r-[3px] border-[#873AE3] border-dashed absolute z-[-2] top-0 left-[50%] hidden lg:block -translate-x-[50%]`}
         ></div>
         {/* tanggal */}
         <div className=" lg:absolute lg:z-[2] w-full lg:w-[156px] p-4 rounded-[12px] bg-[#7B53AB]/50 backdrop-blur-[5px] top-7 lg:left-[50%] lg:translate-x-[-50%] ">
-          <h1 className="} font-semibold text-lg text-center">Kamis, 20 November 2025</h1>
+          <h1 className="} font-semibold text-lg text-center">{data.tanggal}</h1>
         </div>
         {/* tanggal */}
 
-        <div className="w-full lg:w-[48%] h-[350px] lg:h-full rounded-2xl bg-[#393054]/60 p-5 lg:p-10">
-          <div className=" w-full h-full rounded-xl bg-white"></div>
+        <div className="w-full lg:w-[48%] h-[350px] lg:h-full rounded-2xl bg-[#393054]/60 p-5 lg:p-10 relative z-0">
+          <div className=" w-full h-full rounded-xl overflow-hidden relative ">
+            <Image
+              src={data.imgUrl}
+              alt={data.title}
+              fill
+              className=" w-full h-full object-cover group-hover:scale-[1.1] duration-300"
+            />
+            <div className="absolute z-[3] w-full h-full bg-gradient-to-t from-[#4A207D] via-[#4A207D]/20 p-5 lg:p-10 to-transparent flex items-end justify-center group-hover:opacity-[1] opacity-0 duration-300">
+              <Link href={`/event/${data.slug}`} className=" flex items-center gap-3">
+                <span className=" text-xl ">Selengkapnya</span>
+                <ArrowRight size={20} color="white" />
+              </Link>
+            </div>
+          </div>
         </div>
         <div className=" lg:w-[48%] lg:h-full rounded-2xl flex flex-col justify-between gap-5 lg:gap-0">
           <div className="w-full h-[30%] overflow-hidden bg-gradient-to-r from-[#4A207D] via-[#873AE3] to-[#873AE3] rounded-2xl flex flex-col justify-center p-5 lg:px-14 gap-0 lg:gap-2 relative z-0">
@@ -53,23 +72,13 @@ const CardEvent: React.FC<ICardEvent> = ({ isLastItem }) => {
               </svg>
             </div>
             <h1 className=" w-full font-extrabold text-3xl tracking-[3px] lg:text-5xl lg:tracking-[6px]">
-              DETIK
+              {data.singkatanTitle}
             </h1>
-            <h1 className=" w-full text-lg  lg:text-2xl">Dedikasi Informatika</h1>
+            <h1 className=" w-full text-lg  lg:text-2xl line-clamp-1">{data.title}</h1>
           </div>
           <div className="w-full lg:h-[66%] bg-gradient-to-r from-[#4A207D] via-[#873AE3] to-[#873AE3] rounded-2xl p-5 lg:p-12 overflow-hidden">
             <p className=" w-full text-base lg:text-2xl line-clamp-[10] lg:line-clamp-[9]">
-              {' '}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-              ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident,
+              {data.deskripsi.map((item: string) => item)}
             </p>
           </div>
         </div>
