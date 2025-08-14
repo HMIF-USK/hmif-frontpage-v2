@@ -129,14 +129,26 @@ export default function AppFooter() {
         </div>
         <div className=" flex flex-col gap-4">
           <h1 className=" font-bold text-xl">Our Sites</h1>
-          <Link href={'#'} className=" font-semibold text-white/80 mt-3">
-            Attend a Live Event
+          <Link
+            href={'https://infest.hmif-usk.org/'}
+            target="_blank"
+            className=" font-semibold text-white/80 mt-3"
+          >
+            Infest
           </Link>
-          <Link href={'#'} className=" font-semibold text-white/80">
-            Advertise With Us
+          <Link
+            href={'https://gutechdeveloper.site/'}
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
+            Software House
           </Link>
-          <Link href={'#'} className=" font-semibold text-white/80">
-            Support our Mission
+          <Link
+            href={'https://rafliafriza.gutechdeveloper.site/'}
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
+            Our Core
           </Link>
         </div>
         <div className=" flex flex-col gap-4">
