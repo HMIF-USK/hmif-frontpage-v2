@@ -8,6 +8,10 @@ import { CustomCSSProperties } from '@/types/customCSSProperties';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ArrowRight } from 'lucide-react';
 import GridEvents from '@/components/svg/events/grid-event';
+import { IArticle } from '@/types/article.types';
+import { events } from '@/data/event-list';
+import Link from 'next/link';
+import Image from 'next/image';
 const Events: React.FC = () => {
   const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -82,23 +86,33 @@ const Events: React.FC = () => {
               modules={[Navigation, Pagination]}
               slidesPerGroup={1}
             >
-              {Array.from({ length: 6 }).map((achievement: any, i: number) => {
+              {events.map((event: IArticle, i: number) => {
                 return (
                   <SwiperSlide key={i} className="mb-14 px-4 sm:px-6 lg:px-3">
                     <div
-                      className={`w-full h-[400px] lg:h-[550px] bg-[#393054]/30 backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start ${currentIndex + 1 !== i ? 'md:scale-[0.8]' : 'md:scale-x-[1.1]'} duration-300 border-[0.5px] border-white/20`}
+                      className={`w-full h-[400px] lg:h-[550px] bg-[#393054]/30 backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start ${currentIndex + 1 !== i ? 'md:scale-[0.8]' : 'md:scale-x-[1.1]'} duration-300 border-[0.5px] border-white/20 group`}
                     >
                       <div className=" w-full text-white">
-                        <h1 className=" mb-1 text-3xl font-bold">Detik</h1>
-                        <p className=" text-xl">Dedikasi Informatika</p>
+                        <h1 className=" mb-2 text-3xl font-bold">{event.singkatanTitle}</h1>
+                        <p className=" text-lg line-clamp-1">{event.title}</p>
                       </div>
 
-                      <div className=" w-full h-[50%] bg-gray-500 rounded-2xl"></div>
+                      <div className=" w-full h-[50%] overflow-hidden rounded-2xl relative">
+                        <Image
+                          src={event.imgUrl}
+                          alt={event.title}
+                          fill
+                          className="w-full h-full object-cover group-hover:scale-[1.1] duration-300"
+                        />
+                      </div>
 
-                      <div className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+                      <Link
+                        href={`/event/${event.slug}`}
+                        className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+                      >
                         <span>Selengkapnya</span>
                         <ArrowRight />
-                      </div>
+                      </Link>
                     </div>
                   </SwiperSlide>
                 );

@@ -5,10 +5,13 @@ import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { CustomCSSProperties } from '@/types/customCSSProperties';
+import { IArticle } from '@/types/article.types';
+import Link from 'next/link';
 interface IAchievementPageCard {
+  achievement: IArticle;
   index: number;
 }
-const AchievementPageCard: React.FC<IAchievementPageCard> = ({ index }) => {
+const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, index }) => {
   const isMobile: boolean = useIsMobile();
   const [isActive, setIsActive] = useState<boolean>(false);
   const swiperAchievementCard: CustomCSSProperties = !isMobile
@@ -32,32 +35,17 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ index }) => {
       };
 
   return (
-    <div
+    <Link
+      href={`/achievement/${achievement.slug}`}
       className={`w-full group h-auto transition-all duration-300 flex flex-col gap-10 justify-center  rounded-2xl p-5 lg:p-10 bg-gradient-to-r from-[#534081]/20 via-[#534081]/20 to-[#534081]/80 backdrop-blur-[3px]`}
     >
       <div
         className={`flex flex-col-reverse gap-5 lg:gap-0 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}  lg:justify-between items-start`}
       >
         <div className=" w-full lg:w-[51%] h-full flex flex-col gap-8">
-          <h1 className=" text-left text-2xl lg:text-4xl font-semibold">
-            Himpunan dan Proker Terbaik FMIPA Awards 2024
-          </h1>
+          <h1 className=" text-left text-2xl lg:text-4xl font-semibold">{achievement.title}</h1>
           <p className=" text-justify text-base line-clamp-[9] lg:text-lg font-light lg:line-clamp-[12] w-full">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-            est laborum.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            {achievement.deskripsi.map((item: string) => item)}
           </p>
         </div>
         <div className=" w-full lg:w-[45%] h-full flex items-center justify-center relative">
@@ -75,9 +63,27 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ index }) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
+            <defs>
+              <clipPath id={`clip-${index}`}>
+                <path d="M10 0H545C550.523 0 555 4.47716 555 10V249.005C555 251.497 554.07 253.898 552.392 255.74L442.159 376.735C440.264 378.815 437.58 380 434.767 380H10C4.47717 380 0 375.523 0 370V10C0 4.47715 4.47717 0 10 0Z" />
+              </clipPath>
+            </defs>
+
+            {/* Gambar di-clipping agar mengikuti bentuk path */}
+            <image
+              href={achievement.imgUrl} // props gambar
+              width="555"
+              height="380"
+              preserveAspectRatio="xMidYMid slice"
+              clipPath={`url(#clip-${index})`}
+            />
+
+            {/* Optional: Border / stroke shape */}
             <path
               d="M10 0H545C550.523 0 555 4.47716 555 10V249.005C555 251.497 554.07 253.898 552.392 255.74L442.159 376.735C440.264 378.815 437.58 380 434.767 380H10C4.47717 380 0 375.523 0 370V10C0 4.47715 4.47717 0 10 0Z"
-              fill="#ADA0D5"
+              fill="none"
+              stroke="#ADA0D5"
+              strokeWidth="2"
             />
           </svg>
         </div>
@@ -116,7 +122,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ index }) => {
           })}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

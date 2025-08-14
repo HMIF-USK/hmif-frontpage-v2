@@ -22,7 +22,7 @@ const Merch: React.FC = () => {
         '--swiper-pagination-bullet-horizontal-gap': '6px',
         '--swiper-navigation-size': '45px',
         '--swiper-navigation-color': '#ffffff',
-        '--swiper-navigation-sides-offset': '0px',
+        '--swiper-navigation-sides-offset': '15%',
       }
     : {
         '--swiper-pagination-color': '#393054',
