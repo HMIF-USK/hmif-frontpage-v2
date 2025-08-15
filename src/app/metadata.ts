@@ -9,6 +9,12 @@ export const siteConfig = {
   keywords: [
     'himpunan mahasiswa informatika',
     'hmif',
+    'statistika',
+    'unsyiah',
+    'usk',
+    'fmipa usk',
+    'biologi',
+    'matematika',
     'informatika',
     'teknologi informasi',
     'komputer',

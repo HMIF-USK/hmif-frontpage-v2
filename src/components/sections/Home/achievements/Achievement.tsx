@@ -3,7 +3,11 @@ import BackgroundAchievement from './background';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { CustomCSSProperties } from '@/types/customCSSProperties';
+import { achievements } from '@/data/achievement-list';
 import Star from '@/components/svg/events/start';
+import { IArticle } from '@/types/article.types';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Achievements: React.FC = () => {
   const swiperEventStyle: CustomCSSProperties = {
@@ -35,23 +39,35 @@ const Achievements: React.FC = () => {
           </div>
 
           <div className=" w-[90%] grid grid-cols-2 gap-10">
-            {Array.from({ length: 6 }).map((achievement: any, i: number) => {
-              return (
-                <div
-                  className={`w-full h-[400px]  bg-[#393054]/30 backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start duration-300 border-[0.5px] border-white/20`}
-                >
-                  <div className=" w-full text-white">
-                    <h1 className=" mb-1 text-3xl font-bold">Detik</h1>
-                    <p className=" text-xl">Dedikasi Informatika</p>
-                  </div>
+            {achievements.map((achievement: IArticle, i: number) => {
+              if (i < 6) {
+                return (
+                  <div
+                    className={`w-full h-[400px]  bg-[#393054]/30 backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start duration-300 border-[0.5px] border-white/20`}
+                  >
+                    <div className=" w-full text-white">
+                      <h1 className=" mb-1 text-3xl font-bold">{achievement.singkatanTitle}</h1>
+                      <p className=" text-xl line-clamp-1">{achievement.title}</p>
+                    </div>
 
-                  <div className=" w-full h-[50%] bg-gray-500 rounded-2xl"></div>
+                    <div className=" w-full h-[50%] overflow-hidden rounded-2xl relative">
+                      <Image
+                        src={achievement.imgUrl}
+                        alt={achievement.title}
+                        fill
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
 
-                  <div className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
-                    <span>Selengkapnya</span>
+                    <Link
+                      href={`/achievement/${achievement.slug}`}
+                      className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+                    >
+                      <span>Selengkapnya</span>
+                    </Link>
                   </div>
-                </div>
-              );
+                );
+              }
             })}
           </div>
         </div>
@@ -81,22 +97,32 @@ const Achievements: React.FC = () => {
                 modules={[Navigation, Pagination]}
                 slidesPerGroup={1}
               >
-                {Array.from({ length: 6 }).map((achievement: any, i: number) => {
+                {achievements.map((achievement: IArticle, i: number) => {
                   return (
                     <SwiperSlide key={i} className="mb-14 px-4 sm:px-6 lg:px-3">
                       <div
                         className={`w-full h-[400px]  bg-[#393054]/30 backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start duration-300 border-[0.5px] border-white/20`}
                       >
                         <div className=" w-full text-white">
-                          <h1 className=" mb-1 text-3xl font-bold">Detik</h1>
-                          <p className=" text-xl">Dedikasi Informatika</p>
+                          <h1 className=" mb-1 text-3xl font-bold">{achievement.singkatanTitle}</h1>
+                          <p className=" text-xl line-clamp-1">{achievement.title}</p>
                         </div>
 
-                        <div className=" w-full h-[50%] bg-gray-500 rounded-2xl"></div>
+                        <div className=" w-full h-[50%] overflow-hidden rounded-2xl relative">
+                          <Image
+                            src={achievement.imgUrl}
+                            alt={achievement.title}
+                            fill
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
 
-                        <div className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+                        <Link
+                          href={`/achievement/${achievement.slug}`}
+                          className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+                        >
                           <span>Selengkapnya</span>
-                        </div>
+                        </Link>
                       </div>
                     </SwiperSlide>
                   );

@@ -160,7 +160,13 @@ export default function AppFooter() {
           >
             Aqualink
           </Link>
-          <Link href={'/event'} target="_blank" className=" font-semibold text-white/80">
+          <Link
+            href={
+              'https://aceh.tribunnews.com/2025/04/13/platform-darahtanyoe-buatan-mahasiswa-fmipa-usk-raih-juara-2-sandbox-20-itb'
+            }
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
             Darah Tanyoe
           </Link>
           <Link
@@ -195,7 +201,7 @@ export default function AppFooter() {
             Flowin Technologies
           </Link>
           <Link
-            href={'https://budakkorporat.vercel.app'}
+            href={'https://budak-korporat-twibbon-frontpage.vercel.app/home'}
             target="_blank"
             className=" font-semibold text-white/80"
           >

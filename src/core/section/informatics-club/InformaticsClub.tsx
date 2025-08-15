@@ -14,6 +14,12 @@ import LetterC from '@/components/svg/informatics-club/letter-c';
 import LetterL from '@/components/svg/informatics-club/letter-l';
 import LetterU from '@/components/svg/informatics-club/letter-u';
 import LetterB from '@/components/svg/informatics-club/letter-b';
+
+interface IInformaticsClub {
+  division: string;
+  description: string;
+}
+
 const InformaticsClub: React.FC = () => {
   const swiperEventStyle: CustomCSSProperties = {
     '--swiper-pagination-color': '#393054',
@@ -24,6 +30,24 @@ const InformaticsClub: React.FC = () => {
     '--swiper-navigation-color': 'transparent',
     '--swiper-navigation-sides-offset': '0px',
   };
+
+  const InformaticsClub: IInformaticsClub[] = [
+    {
+      division: 'SOFTWARE ENGINEERING',
+      description:
+        "Whatever you've got a design ready to go or need us to whip one up, we'll tackle the development part with unmatched expertiseand precision",
+    },
+    {
+      division: 'MACHINE LEARNING',
+      description:
+        "We're here to join forces with you, uncovering your goals, target audience, and the perfect recipe for a successful machine learning project.",
+    },
+    {
+      division: 'INTERNET OF THINGS',
+      description:
+        'We blend creativity with technology to deliver innovative IoT solutions that connect devices and enhance user experiences.',
+    },
+  ];
 
   return (
     <div className="w-full min-h-screen relative z-0 py-20  lg:overflow-hidden flex justify-center items-center mt-10">
@@ -69,26 +93,19 @@ const InformaticsClub: React.FC = () => {
       <div className=" absolute z-[1] w-[450px] right-[5%] bottom-[10%] hidden xl:block duration-500 hover:scale-[1.05]">
         <CardThreeInformaticsClub />
       </div>
+
       {/* end of desktop */}
 
       {/* mobile */}
       <div className="w-full flex justify-center  xl:hidden">
         <div className=" w-[90%] flex flex-col md:grid md:grid-cols-2 gap-10 px-4">
-          {Array.from({ length: 3 }).map((achievement: any, i: number) => {
+          {InformaticsClub.map((item: IInformaticsClub, i: number) => {
             return (
               <div
-                className={`w-full h-[400px] ${i === 2 ? 'md:col-span-2' : ''} bg-[#393054]/30 backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start  duration-300 border-[0.5px] border-white/20`}
+                className={`w-full  ${i === 2 ? 'md:col-span-2' : ''} bg-[#393054]/30 backdrop-blur-[5px] rounded-2xl p-5 flex flex-col justify-between items-start  duration-300 border-[0.5px] border-white/20 gap-5`}
               >
-                <div className=" w-full text-white">
-                  <h1 className=" mb-1 text-3xl font-bold">Detik</h1>
-                  <p className=" text-xl">Dedikasi Informatika</p>
-                </div>
-
-                <div className=" w-full h-[50%] bg-gray-500 rounded-2xl"></div>
-
-                <div className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
-                  <span>Selengkapnya</span>
-                </div>
+                <h1 className=" mb-1 text-xl font-nasalization font-bold">{item.division}</h1>
+                <p className=" text-base">{item.description}</p>
               </div>
             );
           })}

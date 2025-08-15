@@ -2,6 +2,9 @@
 import EllipsAchievement from '@/components/svg/achievements/ellips-achievement';
 import ElementAchievement from '@/components/svg/achievements/element';
 import { useState, useEffect } from 'react';
+import { achievements } from '@/data/achievement-list';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const BackgroundAchievement: React.FC = () => {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -96,13 +99,25 @@ const BackgroundAchievement: React.FC = () => {
           }}
         >
           <div className="w-full text-white">
-            <h1 className="mb-1 text-3xl font-bold">Detik 1</h1>
-            <p className="text-xl">Dedikasi Informatika</p>
+            <h1 className="mb-1 text-3xl font-bold line-clamp-1">
+              {achievements[0].singkatanTitle}
+            </h1>
+            <p className="text-xl line-clamp-1">{achievements[0].title}</p>
           </div>
-          <div className="w-full h-[50%] bg-gray-500 rounded-2xl"></div>
-          <div className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+          <div className="w-full h-[50%] bg-gray-500 rounded-2xl relative overflow-hidden">
+            <Image
+              src={achievements[0].imgUrl}
+              alt={achievements[0].title}
+              fill
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <Link
+            href={`/achievement/${achievements[0].slug}`}
+            className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+          >
             <span>Selengkapnya</span>
-          </div>
+          </Link>
         </div>
 
         {/* Card 2 - 60° (kanan atas) */}
@@ -115,13 +130,25 @@ const BackgroundAchievement: React.FC = () => {
           }}
         >
           <div className="w-full text-white">
-            <h1 className="mb-1 text-3xl font-bold">Detik 2</h1>
-            <p className="text-xl">Dedikasi Informatika</p>
+            <h1 className="mb-1 text-3xl font-bold line-clamp-1">
+              {achievements[1].singkatanTitle}
+            </h1>
+            <p className="text-xl line-clamp-1">{achievements[1].title}</p>
           </div>
-          <div className="w-full h-[50%] bg-gray-500 rounded-2xl"></div>
-          <div className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+          <div className="w-full h-[50%] bg-gray-500 rounded-2xl relative overflow-hidden">
+            <Image
+              src={achievements[1].imgUrl}
+              alt={achievements[1].title}
+              fill
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <Link
+            href={`/achievement/${achievements[1].slug}`}
+            className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+          >
             <span>Selengkapnya</span>
-          </div>
+          </Link>
         </div>
 
         {/* Card 3 - 120° (kanan bawah) */}
@@ -134,13 +161,25 @@ const BackgroundAchievement: React.FC = () => {
           }}
         >
           <div className="w-full text-white">
-            <h1 className="mb-1 text-3xl font-bold">Detik 3</h1>
-            <p className="text-xl">Dedikasi Informatika</p>
+            <h1 className="mb-1 text-3xl font-bold line-clamp-1">
+              {achievements[2].singkatanTitle}
+            </h1>
+            <p className="text-xl line-clamp-1">{achievements[2].title}</p>
           </div>
-          <div className="w-full h-[50%] bg-gray-500 rounded-2xl"></div>
-          <div className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+          <div className="w-full h-[50%] bg-gray-500 rounded-2xl relative overflow-hidden">
+            <Image
+              src={achievements[2].imgUrl}
+              alt={achievements[2].title}
+              fill
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <Link
+            href={`/achievement/${achievements[2].slug}`}
+            className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+          >
             <span>Selengkapnya</span>
-          </div>
+          </Link>
         </div>
 
         {/* Card 4 - 180° (bawah) */}
@@ -153,13 +192,25 @@ const BackgroundAchievement: React.FC = () => {
           }}
         >
           <div className="w-full text-white">
-            <h1 className="mb-1 text-3xl font-bold">Detik 4</h1>
-            <p className="text-xl">Dedikasi Informatika</p>
+            <h1 className="mb-1 text-3xl font-bold line-clamp-1">
+              {achievements[3].singkatanTitle}
+            </h1>
+            <p className="text-xl line-clamp-1">{achievements[3].title}</p>
           </div>
-          <div className="w-full h-[50%] bg-gray-500 rounded-2xl"></div>
-          <div className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+          <div className="w-full h-[50%] bg-gray-500 rounded-2xl relative overflow-hidden">
+            <Image
+              src={achievements[3].imgUrl}
+              alt={achievements[3].title}
+              fill
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <Link
+            href={`/achievement/${achievements[3].slug}`}
+            className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+          >
             <span>Selengkapnya</span>
-          </div>
+          </Link>
         </div>
 
         {/* Card 5 - 240° (kiri bawah) */}
@@ -172,13 +223,25 @@ const BackgroundAchievement: React.FC = () => {
           }}
         >
           <div className="w-full text-white">
-            <h1 className="mb-1 text-3xl font-bold">Detik 5</h1>
-            <p className="text-xl">Dedikasi Informatika</p>
+            <h1 className="mb-1 text-3xl font-bold line-clamp-1">
+              {achievements[4].singkatanTitle}
+            </h1>
+            <p className="text-xl line-clamp-1">{achievements[4].title}</p>
           </div>
-          <div className="w-full h-[50%] bg-gray-500 rounded-2xl"></div>
-          <div className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+          <div className="w-full h-[50%] bg-gray-500 rounded-2xl relative overflow-hidden">
+            <Image
+              src={achievements[4].imgUrl}
+              alt={achievements[4].title}
+              fill
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <Link
+            href={`/achievement/${achievements[4].slug}`}
+            className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+          >
             <span>Selengkapnya</span>
-          </div>
+          </Link>
         </div>
 
         {/* Card 6 - 300° (kiri atas) */}
@@ -191,13 +254,25 @@ const BackgroundAchievement: React.FC = () => {
           }}
         >
           <div className="w-full text-white">
-            <h1 className="mb-1 text-3xl font-bold">Detik 6</h1>
-            <p className="text-xl">Dedikasi Informatika</p>
+            <h1 className="mb-1 text-3xl font-bold line-clamp-1">
+              {achievements[6].singkatanTitle}
+            </h1>
+            <p className="text-xl line-clamp-1">{achievements[6].title}</p>
           </div>
-          <div className="w-full h-[50%] bg-gray-500 rounded-2xl"></div>
-          <div className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
+          <div className="w-full h-[50%] bg-gray-500 rounded-2xl relative overflow-hidden">
+            <Image
+              src={achievements[6].imgUrl}
+              alt={achievements[6].title}
+              fill
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <Link
+            href={`/achievement/${achievements[6].slug}`}
+            className="bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white"
+          >
             <span>Selengkapnya</span>
-          </div>
+          </Link>
         </div>
       </div>
       <div className=" absolute z-[10] top-[50%] left-[50%] translate-[-50%] hidden xl:flex flex-col items-center gap-2">
@@ -205,7 +280,12 @@ const BackgroundAchievement: React.FC = () => {
           Achievements
         </h1>
         <div className="flex items-center justify-center gap-1 sm:gap-2 bg-gradient-to-b from-[#493582]/30 to-[#472F8C66]/30 border border-white/20 rounded-full px-3 md:px-10 py-1 sm:py-2 md:py-3 shadow-md cursor-pointer ">
-          <h1 className="font-bold text-white  text-xs sm:text-sm md:text-base">SEE MORE</h1>
+          <Link
+            href={'/achievement'}
+            className="font-bold text-white  text-xs sm:text-sm md:text-base"
+          >
+            SEE MORE
+          </Link>
         </div>
       </div>
     </>
