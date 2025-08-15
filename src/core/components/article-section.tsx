@@ -378,7 +378,7 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
           </div>
           <div className="w-full h-[400px] p-4 lg:p-7  rounded-2xl bg-gradient-to-r from-[#534081] via-[#77679F]/20 to-transparent border-1 border-[#534081]/80">
             <h1 className="font-bold text-2xl">Event Lainnya</h1>
-            <div className=" w-full h-[80%] mt-5 overflow-x-hidden flex flex-col gap-7 ">
+            <div className=" w-full h-[80%] mt-5 overflow-x-hidden flex flex-col gap-7 scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-[#911dec] scrollbar-track-transparent">
               {events.map((event: IArticle, i: number) => {
                 return (
                   <Link
