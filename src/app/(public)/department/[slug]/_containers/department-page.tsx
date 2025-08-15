@@ -13,12 +13,16 @@ import Marquee from 'react-fast-marquee';
 import GlassElementDivisionOne from '@/components/svg/department/glass-element-division-one';
 import GlassElementDivisionTwo from '@/components/svg/department/glass-element-division-two';
 import ProkerElement from '@/components/svg/department/proker-element';
+import { getDepartmentBySlug } from '@/data/department-list';
+import NotFound from '@/core/components/not-found';
+import Image from 'next/image';
 
 const ContainerDepartment: React.FC = () => {
   const { slug } = useParams();
+  const department = getDepartmentBySlug(slug as string);
   const isMobile = useIsMobile();
-  const [slidePerView, setSlidePerView] = useState<number>(isMobile ? 3 : 7);
-  const [currentIndexMobile, setCurrentIndexMobile] = useState<number>(0);
+  const [slidePerView, setSlidePerView] = useState<number>(isMobile ? 3 : 5);
+  const [currentIndexMobile, setCurrentIndexMobile] = useState<number>(2);
   const [prokerIndexActive, setProkerIndexActive] = useState<number | null>(null);
   const swiperEventStyle: CustomCSSProperties = !isMobile
     ? {
@@ -40,7 +44,7 @@ const ContainerDepartment: React.FC = () => {
         '--swiper-navigation-sides-offset': '0px',
       };
 
-  const styleImgHeader = [
+  const styleImgHeader: { className: string }[] = [
     {
       className:
         'absolute z-[8] scale-[0.75] lg:scale-[0.8] left-[10%] translate-y-[20px] -rotate-[5deg]',
@@ -64,6 +68,9 @@ const ContainerDepartment: React.FC = () => {
     setSlidePerView(isMobile ? 3 : 7);
   }, [isMobile]);
 
+  if (!department) {
+    return <NotFound />;
+  }
   return (
     <NavLayout>
       <main className={`w-screen text-white bg-[#0E0A17]`}>
@@ -261,7 +268,7 @@ const ContainerDepartment: React.FC = () => {
           </div>
           <div className=" flex flex-col items-center ">
             <h1 className="mt-2 sm:mt-4  text-5xl sm:text-8xl tracking-[2px] lg:text-[13rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-tight text-center uppercase">
-              {slug}
+              {department.departmentName}
             </h1>
           </div>
           {/* Glass Element */}
@@ -271,11 +278,21 @@ const ContainerDepartment: React.FC = () => {
           {/* Glass Element */}
           <div className="w-full flex justify-center overflow-hidden">
             <div className="hidden  w-full sm:flex items-center justify-center relative h-[220px] lg:h-[400px]">
-              {Array.from({ length: 5 }).map((item: any, i: number) => {
+              {department.photos.desktop.map((item: any, i: number) => {
                 return (
                   <div
-                    className={`w-[220px] h-[220px] lg:w-[400px] lg:h-[400px] ${styleImgHeader[i].className} bg-white rounded-2xl border-[1px] border-black`}
-                  ></div>
+                    className={`w-[220px] h-[220px] lg:w-[400px] lg:h-[400px] ${styleImgHeader[i]?.className}  rounded-2xl border-[1px] border-black overflow-hidden group`}
+                  >
+                    <Image
+                      src={item.imgUrl}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-[1.1] duration-300"
+                    />
+                    <div className=" w-full h-full absolute inset-0 z-[11] bg-gradient-to-t from-[#4A207D]/80 via-[#4A207D]/20 to-black/30 p-5 flex items-end justify-center font-nasalization text-2xl uppercase">
+                      <h1>{item.title}</h1>
+                    </div>
+                  </div>
                 );
               })}
             </div>
@@ -288,21 +305,27 @@ const ContainerDepartment: React.FC = () => {
                 spaceBetween={0}
                 slidesPerView={slidePerView}
                 loop={true}
+                // initialSlide={currentIndexMobile}
                 pagination={{ clickable: true }}
-                onSlideChange={
-                  (swiper) => setCurrentIndexMobile(swiper.realIndex === 6 ? -1 : swiper.realIndex)
-                  //   console.log(swiper.realIndex)
-                }
+                onSlideChange={(swiper) => (
+                  setCurrentIndexMobile(swiper.realIndex === 4 ? -1 : swiper.realIndex),
+                  console.log(swiper.realIndex)
+                )}
                 onSwiper={(swiper) => console.log(swiper)}
                 modules={[Navigation, Pagination]}
                 slidesPerGroup={1}
               >
-                {Array.from({ length: 7 }).map((achievement: any, i: number) => {
+                {department.photos.mobile.map((item: any, i: number) => {
                   return (
                     <SwiperSlide key={i} className={`mb-14 px-2 sm:px-6 lg:px-3 !h-auto`}>
                       <div
-                        className={`w-full h-[300px]  bg-[#ffffff]/30 backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start ${currentIndexMobile + 1 !== i ? 'scale-y-[0.8]' : 'scale-[1]'} duration-300 border-[0.5px] border-white/20`}
-                      ></div>
+                        className={`w-full h-[300px]  overflow-hidden backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start ${currentIndexMobile + 1 !== i ? 'scale-y-[0.8]' : 'scale-[1]'} duration-300 border-[0.5px] border-white/20`}
+                      >
+                        <Image src={item.imgUrl} alt={item.title} fill className="object-cover" />
+                        <div className=" w-full h-full uppercase absolute inset-0 z-[11] bg-gradient-to-t from-[#4A207D]/80 via-[#4A207D]/20 to-black/30 p-5 flex items-end justify-center font-nasalization text-lg">
+                          <h1>{item.title}</h1>
+                        </div>
+                      </div>
                     </SwiperSlide>
                   );
                 })}
@@ -310,49 +333,54 @@ const ContainerDepartment: React.FC = () => {
             </div>
           </div>
 
-          <div className=" flex flex-col justify-center items-center w-full relative ">
-            <div className=" absolute z-[-1] w-full top-[35%] h-[20px] lg:h-[100px] blur-2xl bg-gradient-to-b from-transparent via-[#D09EFF]/30 to-transparent"></div>
-            <h1 className="mt-2 sm:mt-4  text-5xl sm:text-7xl tracking-[2px] lg:text-[12rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-tight text-center uppercase">
-              DIVISI
-            </h1>
-          </div>
+          {department.division && (
+            <>
+              <div className=" flex flex-col justify-center items-center w-full relative ">
+                <div className=" absolute z-[-1] w-full top-[35%] h-[20px] lg:h-[100px] blur-2xl bg-gradient-to-b from-transparent via-[#D09EFF]/30 to-transparent"></div>
+                <h1 className="mt-2 sm:mt-4  text-5xl sm:text-7xl tracking-[2px] lg:text-[12rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-tight text-center uppercase">
+                  DIVISI
+                </h1>
+              </div>
 
-          <div className=" w-full  relative flex flex-col justify-center gap-20">
-            <div className=" absolute z-[-1] w-[150px] md:w-[200px] lg:w-[500px] top-0 right-[0%] animate-logo-6s">
-              <GlassElementDivisionOne />
-            </div>
-
-            <div className=" absolute z-[-1] w-[150px] md:w-[200px] lg:w-[500px] bottom-[10%] left-0 animate-logo-10s">
-              <GlassElementDivisionTwo />
-            </div>
-
-            {Array.from({ length: 3 }).map((item: any, i: number) => {
-              return (
-                <div
-                  className={`w-full h-[100px]  lg:h-[200px] flex items-center ${i % 2 === 0 ? 'justify-start' : 'justify-end'} overflow-hidden`}
-                >
-                  <div
-                    className={`w-[90%] lg:w-[70%] h-full flex items-center bg-gradient-to-r ${i % 2 === 0 ? 'from-[#5F487A] to-[#AE84E0] rounded-r-2xl' : 'from-[#4A207D] to-[#873AE3] rounded-l-2xl'}`}
-                  >
-                    <Marquee
-                      direction={i % 2 === 0 ? 'right' : 'left'}
-                      className={`w-full h-full flex -mt-1 overflow-hidden ${i % 2 === 0 ? 'rounded-r-2xl' : 'rounded-l-2xl'}`}
-                    >
-                      <h1
-                        style={{
-                          WebkitTextStroke: '2px #ffffff',
-                          WebkitTextFillColor: 'transparent',
-                        }}
-                        className={` uppercase font-extrabold  text-transparent text-[150px] lg:text-[400px] mr-10`}
-                      >
-                        vidiograph
-                      </h1>
-                    </Marquee>
-                  </div>
+              <div className=" w-full  relative flex flex-col justify-center gap-20">
+                <div className=" absolute z-[-1] w-[150px] md:w-[200px] lg:w-[500px] top-0 right-[0%] animate-logo-6s">
+                  <GlassElementDivisionOne />
                 </div>
-              );
-            })}
-          </div>
+
+                <div className=" absolute z-[-1] w-[150px] md:w-[200px] lg:w-[500px] bottom-[10%] left-0 animate-logo-10s">
+                  <GlassElementDivisionTwo />
+                </div>
+
+                {department.division.map((item: string, i: number) => {
+                  return (
+                    <div
+                      className={`w-full h-[100px]  lg:h-[200px] flex items-center ${i % 2 === 0 ? 'justify-start' : 'justify-end'} overflow-hidden`}
+                    >
+                      <div
+                        className={`w-[90%] lg:w-[70%] h-full flex items-center bg-gradient-to-r ${i % 2 === 0 ? 'from-[#5F487A] to-[#AE84E0] rounded-r-2xl' : 'from-[#4A207D] to-[#873AE3] rounded-l-2xl'}`}
+                      >
+                        <Marquee
+                          direction={i % 2 === 0 ? 'right' : 'left'}
+                          className={`w-full h-full flex -mt-1 overflow-hidden ${i % 2 === 0 ? 'rounded-r-2xl' : 'rounded-l-2xl'}`}
+                        >
+                          <h1
+                            style={{
+                              WebkitTextStroke: '2px #ffffff',
+                              WebkitTextFillColor: 'transparent',
+                            }}
+                            className={` uppercase font-extrabold  text-transparent text-[150px] lg:text-[400px] mr-10`}
+                          >
+                            {item}
+                          </h1>
+                        </Marquee>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
           <div className="w-[87%] xl:w-[85%] h-[1px] bg-gradient-to-r from-transparent rounded-full via-[#E19FFF] to-transparent my-20"></div>
           <div className=" flex flex-col gap-20 items-center w-full relative">
             {/* glass element */}
@@ -387,7 +415,7 @@ const ContainerDepartment: React.FC = () => {
 
               <div className="w-full lg:w-1/2 flex flex-col gap-10 px-4 md:px-10 lg:px-0">
                 {/* Right column, stacked vertically with flex-col - full width on small, half on medium and up */}
-                {Array.from({ length: 5 }).map((_, i) => {
+                {department.work.map((item: any, i) => {
                   return (
                     <div
                       key={i}
@@ -400,7 +428,7 @@ const ContainerDepartment: React.FC = () => {
                       <div className=" w-[30px] lg:w-[50px] h-full flex flex-col relative">
                         {/* Timeline line */}
                         <div
-                          className={`w-[1px] ${i !== 4 ? 'h-[135%] md:h-[130%] md:hover:h-[120%]' : 'h-[100%] md:hover:h-[90%]'}  left-[50%] -translate-x-[50%] border-r-[1px] border-white group-hover:border-[#873AE3] absolute z-[-1]`}
+                          className={`w-[1px] ${i !== department.work.length - 1 ? 'h-[135%] md:h-[130%] md:hover:h-[120%]' : 'h-[100%] md:hover:h-[90%]'}  left-[50%] -translate-x-[50%] border-r-[1px] border-white group-hover:border-[#873AE3] absolute z-[-1]`}
                         ></div>
 
                         {/* Icon container */}
@@ -499,21 +527,15 @@ const ContainerDepartment: React.FC = () => {
                       <div
                         className={`w-[85%] p-4 lg:p-10 bg-[#393054]/30 backdrop-blur-[10px] group-hover:bg-gradient-to-br from-[#873AE3] via-[#873AE3]/80 to-[#070111]/26 rounded-md flex flex-col justify-start gap-5 transition-all duration-[0.5s] hover:shadow-lg cursor-pointer `}
                       >
-                        <h1 className="font-bold text-2xl lg:text-5xl line-clamp-1">
+                        <h1 className="font-bold text-2xl lg:text-4xl  font-nasalization">
                           {/* Dynamic content */}
-                          {`Web Development ${i + 1}`}
+                          {item.workName}
                         </h1>
 
                         <div
-                          className={`text-left text-base lg:text-xl overflow-hidden transition-all duration-[0.5s] group-hover:max-h-[200px] group-hover:opacity-100 max-h-0 opacity-0 line-clamp-6`}
+                          className={`text-left text-base lg:text-xl overflow-hidden transition-all duration-[0.5s] group-hover:max-h-[200px] group-hover:opacity-100 max-h-0 opacity-0 `}
                         >
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur.
-                          </p>
+                          <p>{item.desc}</p>
                         </div>
                       </div>
                     </div>
@@ -723,13 +745,19 @@ const ContainerDepartment: React.FC = () => {
             </h1>
           </div>
           <div className="w-full px-5 lg:px-32 grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {Array.from({ length: 4 }).map((_, i: number) => {
+            {department.photos.mobile.map((item: any, i: number) => {
               return (
-                <div className=" w-full flex items-center justify-center min-h-[300px] lg:min-h-[600px] rounded-lg bg-white relative">
-                  <div className=" w-full h-full flex flex-col justify-end p-5 lg:p-10">
+                <div className=" w-full flex items-center justify-center min-h-[300px] lg:min-h-[600px] rounded-lg overflow-hidden relative z-0 group">
+                  <Image
+                    src={item.imgUrl}
+                    alt={item.title}
+                    fill
+                    className="object-cover w-full h-full group-hover:scale-[1.1] duration-300 absolute z-[-2]"
+                  />
+                  <div className=" w-full h-full flex flex-col justify-end p-5 lg:p-10 bg-gradient-to-t from-[#4A207D]/80 via-[#4A207D]/20 to-black/30">
                     <div className="w-full flex items-center justify-between">
-                      <h1 className=" text-black text-2xl lg:text-3xl font-light">
-                        PPM X <span className="font-bold">KOMINKRAF</span>
+                      <h1 className=" text-white text-2xl lg:text-5xl font-light font-nasalization uppercase">
+                        {item.title}
                       </h1>
                     </div>
                   </div>

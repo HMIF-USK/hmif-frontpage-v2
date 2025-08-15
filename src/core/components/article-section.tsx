@@ -547,12 +547,12 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
         </div>
       </div>
 
-      <div className="w-[80%] lg:w-[85%] flex flex-col items-center lg:items-start gap-10 p-4 lg:p-7 bg-gradient-to-r from-[#332A55] to-[#8547F6]/20 border-[2px] border-[#77679F]/50 rounded-2xl ">
+      <div className="w-[80%] lg:w-[85%] flex flex-col items-center lg:items-start gap-10 p-4 lg:p-7 bg-gradient-to-r from-[#332A55] to-[#8547F6]/20 border-[2px] border-[#77679F]/50 rounded-2xl backdrop-blur-2xl">
         <h1 className="py-3 px-10 font-semibold text-xl lg:text-2xl rounded-full bg-gradient-to-r from-[#4A207D] via-[#873AE3] to-[#873AE3]">
           Deskripsi Event
         </h1>
         {data.deskripsi.map((item: string, i: number) => {
-          return <p className=" text-left text-lg lg:text-2xl">{item}</p>;
+          return <p className=" text-left text-lg lg:text-xl">{item}</p>;
         })}
       </div>
     </main>
