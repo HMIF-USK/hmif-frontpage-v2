@@ -1,7 +1,7 @@
 'use client';
 import { IArticle } from '@/types/article.types';
 import Image from 'next/image';
-import { events } from '@/data/event-list';
+import { getAchievementsExceptSlug } from '@/data/achievement-list';
 import { ArrowLeft } from 'lucide-react';
 import { Scan } from 'lucide-react';
 import Link from 'next/link';
@@ -13,6 +13,7 @@ interface IArticleSectionProps {
 }
 const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
   const navigation = useRouter();
+  const nextAchievement = getAchievementsExceptSlug(data?.slug);
   if (!data) return <NotFound />;
   return (
     <main className="w-full min-h-screen lg:min-h-[200vh] flex flex-col items-center xl:pt-[200px] py-14 xl:pb-20 overflow-hidden gap-10 relative z-0 text-white">
@@ -360,7 +361,9 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
             className="w-full h-full object-cover absolute z-[-1]"
           />
           <div className="w-full h-full p-5 lg:p-10 bg-gradient-to-t from-[#4A207D] via-[#4A207D]/20 to-transparent flex items-end justify-start">
-            <h1 className="w-full font-semibold text-2xl lg:text-5xl">{data.title}</h1>
+            <h1 className="w-full font-semibold text-2xl lg:text-5xl font-nasalization">
+              {data.title}
+            </h1>
           </div>
         </div>
         <div className=" w-full h-full flex flex-col justify-between gap-10">
@@ -379,16 +382,25 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
           <div className="w-full h-[400px] p-4 lg:p-7  rounded-2xl bg-gradient-to-r from-[#534081] via-[#77679F]/20 to-transparent border-1 border-[#534081]/80">
             <h1 className="font-bold text-2xl">Event Lainnya</h1>
             <div className=" w-full h-[80%] mt-5 overflow-x-hidden flex flex-col gap-7 scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-[#911dec] scrollbar-track-transparent">
-              {events.map((event: IArticle, i: number) => {
+              {nextAchievement.map((event: IArticle, i: number) => {
                 return (
                   <Link
-                    href={'#'}
+                    href={`/achievement/${event.slug}`}
                     className="flex w-full justify-between items-center p-5 bg-gradient-to-r  from-[#873AE3] to-[#4A207D] rounded-2xl "
                   >
-                    <div className="w-[50px] h-[50px] lg:w-[61px] lg:h-[61px] rounded-xl bg-[#D9D9D9]"></div>
+                    <div className="w-[50px] h-[50px] lg:w-[61px] lg:h-[61px] rounded-xl relative ">
+                      <Image
+                        src={event.imgUrl}
+                        alt={event.title}
+                        fill
+                        className="w-full h-full object-cover rounded-xl"
+                      />
+                    </div>
                     <div className="w-[78%] lg:w-[82%] flex flex-col items-start gap-1">
                       <h1 className=" font-bold text-xl lg:text-2xl line-clamp-1">{event.title}</h1>
-                      <h1 className="text-sm lg:text-base line-clamp-1">{data.penyelenggara[1]}</h1>
+                      <h1 className="text-sm lg:text-base line-clamp-1">
+                        {event.penyelenggara[1]}
+                      </h1>
                     </div>
                   </Link>
                 );
