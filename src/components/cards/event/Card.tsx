@@ -31,7 +31,7 @@ const CardEvent: React.FC<ICardEvent> = ({ data, isLastItem }) => {
               fill
               className=" w-full h-full object-cover group-hover:scale-[1.1] duration-300"
             />
-            <div className="absolute z-[3] w-full h-full bg-gradient-to-t from-[#4A207D] via-[#4A207D]/20 p-5 lg:p-10 to-transparent flex items-end justify-center group-hover:opacity-[1] opacity-0 duration-300">
+            <div className="absolute z-[3] w-full h-full bg-gradient-to-t from-[#4A207D] via-[#4A207D]/20 p-5 lg:p-10 to-transparent flex items-end justify-center lg:group-hover:opacity-[1] opacity-[1] lg:opacity-0 duration-300">
               <Link href={`/event/${data.slug}`} className=" flex items-center gap-3">
                 <span className=" text-xl ">Selengkapnya</span>
                 <ArrowRight size={20} color="white" />

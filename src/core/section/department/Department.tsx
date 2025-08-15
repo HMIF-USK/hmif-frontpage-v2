@@ -1,16 +1,16 @@
 'use client';
 
 import DepartmentBackground from './background/DepartmentBackground';
+import { IDepartment } from '@/types/department.type';
 import { departmentList } from '@/data/department-list';
-import { DepartmentList } from '@/types/department.type';
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
 const Department: React.FC = () => {
   return (
-    <div className=" w-full min-h-screen relative z-0 bg-transparent flex items-center justify-center ">
+    <div className=" w-full min-h-screen relative z-0 bg-transparent flex items-center justify-center py-20">
       <div className="w-[80%] lg:w-[75%] flex flex-col ">
-        {departmentList.map((item: DepartmentList, i: number) => {
+        {departmentList.map((item: IDepartment, i: number) => {
           return (
             <Link
               href={`/department/${item.slug}`}

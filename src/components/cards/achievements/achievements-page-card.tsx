@@ -13,7 +13,7 @@ interface IAchievementPageCard {
 }
 const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, index }) => {
   const isMobile: boolean = useIsMobile();
-  const [isActive, setIsActive] = useState<boolean>(false);
+  // const [isActive, setIsActive] = useState<boolean>(false);
   const swiperAchievementCard: CustomCSSProperties = !isMobile
     ? {
         '--swiper-pagination-color': '#393054',
@@ -37,7 +37,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
   return (
     <div
       // href={`/achievement/${achievement.slug}`}
-      className={`w-full group h-auto transition-all duration-300 flex flex-col gap-10 justify-center  rounded-2xl p-5 lg:p-10 bg-gradient-to-r from-[#534081]/20 via-[#534081]/20 to-[#534081]/80 backdrop-blur-[3px]`}
+      className={`w-full group h-auto transition-all duration-300 flex flex-col gap-10 justify-center  rounded-2xl p-5 lg:p-10 bg-gradient-to-r from-[#534081]/20 via-[#534081]/20 to-[#534081]/80 backdrop-blur-[3px] group`}
     >
       <div
         className={`flex flex-col-reverse gap-5 lg:gap-0 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}  lg:justify-between items-start`}
@@ -49,14 +49,14 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
           </p>
         </div>
         <div className=" w-full lg:w-[45%] h-full flex items-center justify-center relative">
-          <button
-            onClick={() => setIsActive((prev) => !prev)}
+          <Link
+            href={`/achievement/${achievement.slug}`}
             className="flex absolute z-[2] right-0 bottom-0 w-[30px] h-[30px] md:w-[60px] md:h-[60px]  items-center justify-center rounded-full bg-transparent group-hover:bg-gradient-to-r from-[#D3AEE9] via-[#5A189A] to-[#5A189A] group-hover:border-[1px] group-hover:border-white duration-300"
           >
-            <div className={`${isActive ? 'rotate-[45deg]' : ''} duration-300`}>
+            <div className={` duration-300 group-hover:rotate-[45deg]`}>
               <ArrowUpRight size={isMobile ? 20 : 30} />
             </div>
-          </button>
+          </Link>
           <svg
             className="w-full h-auto"
             viewBox="0 0 555 380"
@@ -88,7 +88,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
           </svg>
         </div>
       </div>
-      <div className=" w-full flex flex-col justify-center items-center gap-5">
+      {/* <div className=" w-full flex flex-col justify-center items-center gap-5">
         <div
           className={`w-[100%] lg:hidden duration-300 ${isActive ? 'h-[280px] md:h-[380px] opacity-[1]' : 'h-0 opacity-0'}`}
         >
@@ -121,14 +121,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
             return <div className=" w-full  bg-[#ADA0D4] rounded-lg"></div>;
           })}
         </div>
-        <Link
-          href={`/achievement/${achievement.slug}`}
-          className="flex items-center justify-center gap-3 py-3 px-10 font-semibold mt-5 rounded-lg w-full md:w-auto bg-gradient-to-r from-[#D3AEE9] via-[#5A189A] to-[#5A189A] text-center"
-        >
-          <span>Selengkapnya</span>
-          <ArrowRight size={20} color="white" />
-        </Link>
-      </div>
+      </div> */}
     </div>
   );
 };

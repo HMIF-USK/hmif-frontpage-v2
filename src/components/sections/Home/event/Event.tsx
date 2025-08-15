@@ -79,7 +79,7 @@ const Events: React.FC = () => {
               loop={true}
               pagination={{ clickable: true }}
               onSlideChange={(swiper) => (
-                setCurrentIndex(swiper.realIndex === 5 ? -1 : swiper.realIndex),
+                setCurrentIndex(swiper.realIndex === events.length - 1 ? -1 : swiper.realIndex),
                 console.log(swiper.realIndex)
               )}
               onSwiper={(swiper) => console.log(swiper)}
@@ -97,7 +97,8 @@ const Events: React.FC = () => {
                         <p className=" text-lg line-clamp-1">{event.title}</p>
                       </div>
 
-                      <div className=" w-full h-[50%] overflow-hidden rounded-2xl relative">
+                      <div className=" w-full h-[50%] overflow-hidden rounded-2xl relative z-0">
+                        <div className="w-full h-full  bg-gradient-to-t from-[#4A207D] via-[#4A207D]/20 to-transparent absolute z-[1]"></div>
                         <Image
                           src={event.imgUrl}
                           alt={event.title}
