@@ -1,5 +1,5 @@
 'use client';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -35,8 +35,8 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
       };
 
   return (
-    <Link
-      href={`/achievement/${achievement.slug}`}
+    <div
+      // href={`/achievement/${achievement.slug}`}
       className={`w-full group h-auto transition-all duration-300 flex flex-col gap-10 justify-center  rounded-2xl p-5 lg:p-10 bg-gradient-to-r from-[#534081]/20 via-[#534081]/20 to-[#534081]/80 backdrop-blur-[3px]`}
     >
       <div
@@ -88,7 +88,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
           </svg>
         </div>
       </div>
-      <div className=" w-full flex justify-center items-center gap-5">
+      <div className=" w-full flex flex-col justify-center items-center gap-5">
         <div
           className={`w-[100%] lg:hidden duration-300 ${isActive ? 'h-[280px] md:h-[380px] opacity-[1]' : 'h-0 opacity-0'}`}
         >
@@ -121,8 +121,15 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
             return <div className=" w-full  bg-[#ADA0D4] rounded-lg"></div>;
           })}
         </div>
+        <Link
+          href={`/achievement/${achievement.slug}`}
+          className="flex items-center justify-center gap-3 py-3 px-10 font-semibold mt-5 rounded-lg w-full md:w-auto bg-gradient-to-r from-[#D3AEE9] via-[#5A189A] to-[#5A189A] text-center"
+        >
+          <span>Selengkapnya</span>
+          <ArrowRight size={20} color="white" />
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 };
 

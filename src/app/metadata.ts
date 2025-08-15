@@ -1,11 +1,37 @@
 import type { Metadata } from 'next';
 
 export const siteConfig = {
-  name: 'Next.js Shadcn Base',
-  description: 'Aplikasi berbasis Next.js dengan UI yang modern',
-  url: 'https://your-domain.com',
+  name: 'Himpunan Mahasiswa Informatika',
+  description:
+    'Organisasi mahasiswa informatika terdepan dengan berbagai program pengembangan akademik, penelitian, dan kegiatan kemahasiswaan untuk memajukan bidang teknologi informasi dan komputer',
+  url: 'https://hmif.unri.ac.id',
   locale: 'id-ID',
-  keywords: ['next.js', 'react', 'aplikasi web', 'indonesia', 'modern ui', 'shadcn'],
+  keywords: [
+    'himpunan mahasiswa informatika',
+    'hmif',
+    'informatika',
+    'teknologi informasi',
+    'komputer',
+    'programming',
+    'software engineering',
+    'data science',
+    'artificial intelligence',
+    'mahasiswa informatika',
+    'organisasi mahasiswa',
+    'universitas',
+    'workshop teknologi',
+    'seminar IT',
+    'penelitian informatika',
+    'pengembangan software',
+    'coding bootcamp',
+    'teknologi terbaru',
+    'komunitas programmer',
+    'student organization',
+    'computer science',
+    'IT events',
+    'tech community',
+    'indonesia',
+  ],
 };
 
 export const metadata: Metadata = {

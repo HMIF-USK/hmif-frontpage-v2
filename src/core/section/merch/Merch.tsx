@@ -38,10 +38,10 @@ const Merch: React.FC = () => {
     setSlidePerView(isMobile ? 1 : 3);
   }, [isMobile]);
   return (
-    <div className=" w-screen min-h-screen flex flex-col items-center gap-20 relative z-0 overflow-x-hidden">
-      <div className=" w-full absolute z-[-10] -bottom-[0%]">
+    <div className=" w-screen  flex flex-col items-center gap-20 relative z-0 overflow-x-hidden">
+      {/* <div className=" w-full absolute z-[-10] -bottom-[0%]">
         <BackgroundMerch />
-      </div>
+      </div> */}
 
       <div className=" w-full flex flex-col relative z-0 bg-gradient-to-b from-[#493582] via-[#280D4A] to-[#280D4A] h-[150px] md:h-[300px] lg:h-[450px] overflow-hidden">
         <div className="absolute z-[-8] w-[70px] md:w-[150px] lg:w-[250px] right-4 top-5 md:top-10 animate-logo-10s">
@@ -59,26 +59,26 @@ const Merch: React.FC = () => {
         <div className=" absolute z-[-10] w-full inset-0 overflow-hidden">
           <Marquee direction="right" className="overflow-hidden">
             <h1 className="text-6xl md:text-[9rem] lg:text-[10rem] font-extrabold tracking-[6px] ml-5 md:ml-10">
-              MERCHANDISE
+              INFORMATICS CLUB
             </h1>
             <h1 className="text-6xl md:text-[9rem] lg:text-[10rem] font-extrabold tracking-[6px] ml-5 md:ml-10">
-              MERCHANDISE
+              INFORMATICS CLUB
             </h1>
           </Marquee>
         </div>
         <div className=" absolute z-[-1] w-full bottom-0 left-0 overflow-hidden">
           <Marquee direction="left" className="overflow-hidden">
             <h1 className="text-6xl md:text-[10rem] font-extrabold tracking-[6px] ml-5 md:ml-10">
-              MERCHANDISE
+              INFORMATICS CLUB
             </h1>
             <h1 className="text-6xl md:text-[10rem] font-extrabold tracking-[6px] ml-5 md:ml-10">
-              MERCHANDISE
+              INFORMATICS CLUB
             </h1>
           </Marquee>
         </div>
       </div>
 
-      <div className="w-full flex justify-center">
+      {/* <div className="w-full flex justify-center">
         <div className="w-[90%] md:w-[130%]">
           <Swiper
             style={swiperEventStyle}
@@ -112,7 +112,6 @@ const Merch: React.FC = () => {
 
                       <div className=" bg-[#101010]/20 py-3 rounded-full px-4 flex items-center justify-center gap-5 font-bold border-[0.5px] border-white">
                         <span>Selengkapnya</span>
-                        {/* <ArrowRight /> */}
                       </div>
                     </div>
                   </div>
@@ -121,7 +120,7 @@ const Merch: React.FC = () => {
             })}
           </Swiper>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

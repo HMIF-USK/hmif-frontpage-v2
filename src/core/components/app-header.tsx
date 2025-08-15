@@ -103,12 +103,12 @@ const AppHeader: React.FC = () => {
                   <time className="mb-1 text-sm font-bold leading-none text-white ">Event</time>
                 </Link>
               </li>
-              <li className="mb-10 ms-4">
+              {/* <li className="mb-10 ms-4">
                 <div className="absolute w-3 h-3  rounded-full mt-1.5 -start-1.5 border border-white bg-white"></div>
                 <Link href={'/merch'} onClick={() => handleClick()}>
                   <time className="mb-1 text-sm font-bold leading-none text-white ">Merch</time>
                 </Link>
-              </li>
+              </li> */}
               <li className="ms-4">
                 <div className="absolute w-3 h-3  rounded-full mt-1.5 -start-1.5 border border-white bg-white"></div>
                 <Link href={'/achievement'} onClick={() => handleClick()}>
@@ -255,7 +255,7 @@ const AppHeader: React.FC = () => {
               )}
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href={'/merch'}
               onClick={() => setIsActiveSection(3)}
@@ -289,7 +289,7 @@ const AppHeader: React.FC = () => {
                 ></div>
               )}
             </Link>
-          </li>
+          </li> */}
           {/* <li>
             <Link
               href={"/article"}

@@ -1,10 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@plugin 'tailwind-scrollbar' {
+  nocompatible: true;
+  preferredstrategy: 'pseudoelements';
+}
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: 'Nasalization';
+  src: url('/fonts/nasalization/Nasalization.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
+  --font-nasalization: 'Nasalization', sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);

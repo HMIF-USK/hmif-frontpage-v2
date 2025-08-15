@@ -199,7 +199,7 @@ const HeroSection: React.FC = () => {
         {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item: number, i: number) => (
           <h1
             key={i}
-            className=" text-[100px] tracking-[20px] lg:text-[320px] font-bold lg:tracking-[5vw] lg:mt-[50px] bg-gradient-to-r from-[#0E0A17] via-[#E19FFF] to-[#0E0A17] bg-clip-text text-transparent"
+            className=" font-nasalization text-[100px] tracking-[20px] lg:text-[320px]  lg:tracking-[5vw] lg:mt-[50px] bg-gradient-to-r from-[#0E0A17] via-[#E19FFF] to-[#0E0A17] bg-clip-text text-transparent"
           >
             BEYOND
           </h1>

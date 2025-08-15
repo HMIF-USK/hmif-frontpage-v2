@@ -129,44 +129,83 @@ export default function AppFooter() {
         </div>
         <div className=" flex flex-col gap-4">
           <h1 className=" font-bold text-xl">Our Sites</h1>
-          <Link href={'#'} className=" font-semibold text-white/80 mt-3">
-            Attend a Live Event
+          <Link
+            href={'https://infest.hmif-usk.org/'}
+            target="_blank"
+            className=" font-semibold text-white/80 mt-3"
+          >
+            Infest
           </Link>
-          <Link href={'#'} className=" font-semibold text-white/80">
-            Advertise With Us
+          <Link
+            href={'https://gutechdeveloper.site/'}
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
+            Software House
           </Link>
-          <Link href={'#'} className=" font-semibold text-white/80">
-            Support our Mission
+          <Link
+            href={'https://rafliafriza.gutechdeveloper.site/'}
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
+            Our Core
           </Link>
         </div>
         <div className=" flex flex-col gap-4">
-          <h1 className=" font-bold text-xl">Legal Info</h1>
-          <Link href={'#'} className=" font-semibold text-white/80 mt-3">
-            Attend a Live Event
+          <h1 className=" font-bold text-xl">Product</h1>
+          <Link
+            href={'https://aqualink.site'}
+            target="_blank"
+            className=" font-semibold text-white/80 mt-3"
+          >
+            Aqualink
           </Link>
-          <Link href={'#'} className=" font-semibold text-white/80">
-            Advertise With Us
+          <Link href={'/event'} target="_blank" className=" font-semibold text-white/80">
+            Darah Tanyoe
           </Link>
-          <Link href={'#'} className=" font-semibold text-white/80">
-            Support our Mission
+          <Link
+            href={'https://lexbotid.gutechdeveloper.site'}
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
+            LexBotID
+          </Link>
+          <Link
+            href={'https://glucoguardian.vercel.app'}
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
+            GlucoGuardian
           </Link>
         </div>
         <div className=" flex flex-col gap-4">
-          <h1 className=" font-bold text-xl">Our Sites</h1>
-          <Link href={'#'} className=" font-semibold text-white/80 mt-3">
-            Attend a Live Event
+          <h1 className=" font-bold text-xl">Partner</h1>
+          <Link
+            href={'https://gutechdeveloper.site/'}
+            target="_blank"
+            className=" font-semibold text-white/80 mt-3"
+          >
+            Gutech Developer
           </Link>
-          <Link href={'#'} className=" font-semibold text-white/80">
-            Advertise With Us
+          <Link
+            href={'https://aqualink.site'}
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
+            Flowin Technologies
           </Link>
-          <Link href={'#'} className=" font-semibold text-white/80">
-            Support our Mission
+          <Link
+            href={'https://budakkorporat.vercel.app'}
+            target="_blank"
+            className=" font-semibold text-white/80"
+          >
+            Budak Korporat
           </Link>
         </div>
       </div>
 
       <h1 className=" pt-8 border-t-[1px] border-white/25 w-screen text-center">
-        ©2025 HMIF FMIPA USK All rights reserved
+        ©2025 HMIF FMIPA USK X Gutech Developer X Budak Korporat. All rights reserved
       </h1>
     </footer>
   );
