@@ -1,16 +1,15 @@
 'use client';
 import dynamic from 'next/dynamic';
-import { themeConfig } from '@/configs/theme.config';
 import NavLayout from '@/core/layouts/nav.layout';
 import { useTheme } from '@/core/providers/theme.provider';
 import Marquee from 'react-fast-marquee';
-import Achievements from '@/components/sections/Home/achievements/Achievement';
-import Events from '@/components/sections/Home/event/Event';
-import HeroSection from '@/core/section/hero';
-import Department from '@/core/section/department/Department';
-import Merch from '@/core/section/merch/Merch';
-import InformaticsClub from '@/core/section/informatics-club/InformaticsClub';
-import Contact from '@/core/section/contact/Contact';
+import Achievements from '@/components/sections/public/home/achievements/Achievement';
+import Events from '@/components/sections/public/home/event/Event';
+import HeroSection from '@/components/sections/public/home/hero';
+import Department from '@/components/sections/public/home/department/Department';
+import Merch from '@/components/sections/public/home/merch/Merch';
+import InformaticsClub from '@/components/sections/public/home/informatics-club/InformaticsClub';
+import Contact from '@/components/sections/public/home/contact/Contact';
 
 const Teserract = dynamic(() => import('@/components/svg/hero/teserract'), { ssr: false });
 
@@ -19,10 +18,10 @@ export default function ContainerHome() {
 
   return (
     <NavLayout>
-      <main className={`w-full bg-[#0E0A17] overflow-hidden text-white`}>
+      <main className={`w-full bg-background overflow-hidden text-white`}>
         <div className="flex flex-col items-center justify-center h-full w-full">
           <HeroSection />
-          <div className="w-full py-6 bg-gradient-to-r from-[#D3AEE9] via-[#5A189A] to-[#5A189A] overflow-hidden">
+          <div className="w-full py-6 bg-gradient-to-r from-brand-soft via-brand to-brand overflow-hidden">
             <Marquee direction="right">
               {[1, 1, 1, 1, 1, 1].map((data: number, i: number) => {
                 return (
@@ -182,7 +181,7 @@ export default function ContainerHome() {
           {/* <Events /> */}
           <Events />
           <Achievements />
-          <div className="w-full py-6 bg-[#140E24] overflow-hidden">
+          <div className="w-full py-6 bg-background overflow-hidden">
             <Marquee direction="left">
               {Array.from({ length: 15 }).map((data: any, i: number) => {
                 return (

@@ -1,9 +1,10 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { themeConfig } from '@/configs/theme.config';
+import { themeConfig } from '../../configs/theme.config';
 
 type Theme = 'light' | 'dark';
+type ThemeValue = string | { background: string; foreground: string };
 
 interface ThemeContextType {
   theme: Theme;
@@ -13,40 +14,39 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
+
+  const applyTheme = (nextTheme: Theme) => {
+    document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+
+    const themeValues = themeConfig[nextTheme];
+    (Object.keys(themeValues) as Array<keyof typeof themeValues>).forEach((key) => {
+      const value = themeValues[key] as ThemeValue;
+      if (typeof value === 'string') {
+        document.documentElement.style.setProperty(`--${key}`, value);
+      } else {
+        document.documentElement.style.setProperty(`--${key}`, value.background);
+        document.documentElement.style.setProperty(`--${key}-foreground`, value.foreground);
+      }
+    });
+  };
 
   useEffect(() => {
     setMounted(true);
-    // Check if user has theme preference in localStorage
     const storedTheme = localStorage.getItem('theme') as Theme | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme: Theme = storedTheme || 'dark';
 
-    if (storedTheme) {
-      setTheme(storedTheme);
-      document.documentElement.classList.toggle('dark', storedTheme === 'dark');
-    } else if (prefersDark) {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
-    }
+    setTheme(initialTheme);
+    applyTheme(initialTheme);
+    localStorage.setItem('theme', initialTheme);
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    document.documentElement.classList.toggle('dark');
+    applyTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-
-    // Apply theme variables
-    const themeValues = themeConfig[newTheme];
-    Object.entries(themeValues).forEach(([key, value]) => {
-      if (typeof value === 'string') {
-        document.documentElement.style.setProperty(`--${key}`, value);
-      } else if (typeof value === 'object') {
-        document.documentElement.style.setProperty(`--${key}`, value.background);
-        document.documentElement.style.setProperty(`--${key}-foreground`, value.foreground);
-      }
-    });
   };
 
   // Prevent hydration mismatch

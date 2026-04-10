@@ -37,7 +37,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
   return (
     <div
       // href={`/achievement/${achievement.slug}`}
-      className={`w-full group h-auto transition-all duration-300 flex flex-col gap-10 justify-center  rounded-2xl p-5 lg:p-10 bg-gradient-to-r from-[#534081]/20 via-[#534081]/20 to-[#534081]/80 backdrop-blur-[3px] group`}
+      className={`w-full group h-auto transition-all duration-300 flex flex-col gap-10 justify-center  rounded-2xl p-5 lg:p-10 bg-gradient-to-r from-surface-strong/20 via-surface-strong/20 to-surface-strong/80 backdrop-blur-[3px] group`}
     >
       <div
         className={`flex flex-col-reverse gap-5 lg:gap-0 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}  lg:justify-between items-start`}
@@ -51,7 +51,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
         <div className=" w-full lg:w-[45%] h-full flex items-center justify-center relative">
           <Link
             href={`/achievement/${achievement.slug}`}
-            className="flex absolute z-[2] right-0 bottom-0 w-[30px] h-[30px] md:w-[60px] md:h-[60px]  items-center justify-center rounded-full bg-transparent group-hover:bg-gradient-to-r from-[#D3AEE9] via-[#5A189A] to-[#5A189A] group-hover:border-[1px] group-hover:border-white duration-300"
+            className="flex absolute z-[2] right-0 bottom-0 w-[30px] h-[30px] md:w-[60px] md:h-[60px]  items-center justify-center rounded-full bg-transparent group-hover:bg-gradient-to-r from-brand-soft via-brand to-brand group-hover:border-[1px] group-hover:border-white duration-300"
           >
             <div className={` duration-300 group-hover:rotate-[45deg]`}>
               <ArrowUpRight size={isMobile ? 20 : 30} />
@@ -108,7 +108,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
             {Array.from({ length: 3 }).map((achievement: any, i: number) => {
               return (
                 <SwiperSlide key={i} className="mb-14 px-4">
-                  <div className=" w-full h-full bg-[#ADA0D4] rounded-lg "></div>
+                  <div className=" w-full h-full bg-muted rounded-lg "></div>
                 </SwiperSlide>
               );
             })}
@@ -118,7 +118,7 @@ const AchievementPageCard: React.FC<IAchievementPageCard> = ({ achievement, inde
           className={`w-full hidden lg:grid duration-300 ${isActive ? 'h-[280px] md:h-[380px] opacity-[1]' : 'h-0 opacity-0'} overflow-hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10`}
         >
           {Array.from({ length: 3 }).map((_, i: number) => {
-            return <div className=" w-full  bg-[#ADA0D4] rounded-lg"></div>;
+            return <div className=" w-full  bg-muted rounded-lg"></div>;
           })}
         </div>
       </div> */}

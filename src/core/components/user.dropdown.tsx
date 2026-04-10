@@ -22,17 +22,17 @@ interface UserDropdownProps {
 const userDropdownItems: UserDropdownProps[] = [
   {
     title: 'Profile',
-    icon: <CircleUserRound className="text-black" />,
+    icon: <CircleUserRound className="text-white" />,
     href: '/profile',
   },
   {
     title: 'History Forum',
-    icon: <History className="text-black" />,
+    icon: <History className="text-white" />,
     href: '/history-forum',
   },
   {
     title: 'Logout',
-    icon: <LogOut className="text-black" />,
+    icon: <LogOut className="text-white" />,
     href: '/logout',
   },
 ];
@@ -64,7 +64,7 @@ export default function UserDropdown() {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <DropdownMenuLabel className="flex flex-col gap-2">
-            <span className="text-xs text-gray-500">{user?.username}</span>
+            <span className="text-xs text-muted-foreground">{user?.username}</span>
             <span className="text-sm font-semibold">{user?.name}</span>
           </DropdownMenuLabel>
         </div>
@@ -72,7 +72,7 @@ export default function UserDropdown() {
 
         {userDropdownItems.map((item) => (
           <DropdownMenuItem key={item.title} className="mb-2">
-            <Link href={item.href} className="flex items-center gap-2 text-black">
+            <Link href={item.href} className="flex items-center gap-2 text-white">
               <span>{item.icon}</span>
               <span>{item.title}</span>
             </Link>

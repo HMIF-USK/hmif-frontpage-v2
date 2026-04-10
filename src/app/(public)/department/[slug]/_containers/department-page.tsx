@@ -73,7 +73,7 @@ const ContainerDepartment: React.FC = () => {
   }
   return (
     <NavLayout>
-      <main className={`w-screen text-white bg-[#0E0A17]`}>
+      <main className={`w-screen text-white bg-background`}>
         <div className="w-full min-h-screen flex flex-col items-center xl:pt-[12vh] py-14 xl:pb-20 overflow-hidden gap-10 lg:gap-20 relative z-0 ">
           <div className="absolute z-[-5] w-full max-w-[100vw] top-0 lg:top-[25vh] rotate-x-[180deg]">
             <svg
@@ -267,7 +267,7 @@ const ContainerDepartment: React.FC = () => {
             </svg>
           </div>
           <div className=" flex flex-col items-center ">
-            <h1 className="mt-2 sm:mt-4  text-5xl sm:text-8xl tracking-[2px] lg:text-[13rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-tight text-center uppercase">
+            <h1 className="mt-2 sm:mt-4  text-5xl sm:text-8xl tracking-[2px] lg:text-[13rem] font-extrabold bg-gradient-to-b from-white to-muted-foreground bg-clip-text text-transparent leading-tight text-center uppercase">
               {department.departmentName}
             </h1>
           </div>
@@ -281,7 +281,7 @@ const ContainerDepartment: React.FC = () => {
               {department.photos.desktop.map((item: any, i: number) => {
                 return (
                   <div
-                    className={`w-[220px] h-[220px] lg:w-[400px] lg:h-[400px] ${styleImgHeader[i]?.className}  rounded-2xl border-[1px] border-black overflow-hidden group`}
+                    className={`w-[220px] h-[220px] lg:w-[400px] lg:h-[400px] ${styleImgHeader[i]?.className}  rounded-2xl border-[1px] border-border overflow-hidden group`}
                   >
                     <Image
                       src={item.imgUrl}
@@ -289,7 +289,7 @@ const ContainerDepartment: React.FC = () => {
                       fill
                       className="object-cover group-hover:scale-[1.1] duration-300"
                     />
-                    <div className=" w-full h-full absolute inset-0 z-[11] bg-gradient-to-t from-[#4A207D]/80 via-[#4A207D]/20 to-black/30 p-5 flex items-end justify-center font-nasalization text-2xl uppercase">
+                    <div className=" w-full h-full absolute inset-0 z-[11] bg-gradient-to-t from-brand-deep/80 via-brand-deep/20 to-black/30 p-5 flex items-end justify-center font-nasalization text-2xl uppercase">
                       <h1>{item.title}</h1>
                     </div>
                   </div>
@@ -322,7 +322,7 @@ const ContainerDepartment: React.FC = () => {
                         className={`w-full h-[300px]  overflow-hidden backdrop-blur-[2px] rounded-2xl p-5 flex flex-col justify-between items-start ${currentIndexMobile + 1 !== i ? 'scale-y-[0.8]' : 'scale-[1]'} duration-300 border-[0.5px] border-white/20`}
                       >
                         <Image src={item.imgUrl} alt={item.title} fill className="object-cover" />
-                        <div className=" w-full h-full uppercase absolute inset-0 z-[11] bg-gradient-to-t from-[#4A207D]/80 via-[#4A207D]/20 to-black/30 p-5 flex items-end justify-center font-nasalization text-lg">
+                        <div className=" w-full h-full uppercase absolute inset-0 z-[11] bg-gradient-to-t from-brand-deep/80 via-brand-deep/20 to-black/30 p-5 flex items-end justify-center font-nasalization text-lg">
                           <h1>{item.title}</h1>
                         </div>
                       </div>
@@ -336,8 +336,8 @@ const ContainerDepartment: React.FC = () => {
           {department.division && (
             <>
               <div className=" flex flex-col justify-center items-center w-full relative ">
-                <div className=" absolute z-[-1] w-full top-[35%] h-[20px] lg:h-[100px] blur-2xl bg-gradient-to-b from-transparent via-[#D09EFF]/30 to-transparent"></div>
-                <h1 className="mt-2 sm:mt-4  text-5xl sm:text-7xl tracking-[2px] lg:text-[12rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-tight text-center uppercase">
+                <div className=" absolute z-[-1] w-full top-[35%] h-[20px] lg:h-[100px] blur-2xl bg-gradient-to-b from-transparent via-brand-soft/30 to-transparent"></div>
+                <h1 className="mt-2 sm:mt-4  text-5xl sm:text-7xl tracking-[2px] lg:text-[12rem] font-extrabold bg-gradient-to-b from-white to-muted-foreground bg-clip-text text-transparent leading-tight text-center uppercase">
                   DIVISI
                 </h1>
               </div>
@@ -357,7 +357,7 @@ const ContainerDepartment: React.FC = () => {
                       className={`w-full h-[100px]  lg:h-[200px] flex items-center ${i % 2 === 0 ? 'justify-start' : 'justify-end'} overflow-hidden`}
                     >
                       <div
-                        className={`w-[90%] lg:w-[70%] h-full flex items-center bg-gradient-to-r ${i % 2 === 0 ? 'from-[#5F487A] to-[#AE84E0] rounded-r-2xl' : 'from-[#4A207D] to-[#873AE3] rounded-l-2xl'}`}
+                        className={`w-[90%] lg:w-[70%] h-full flex items-center bg-gradient-to-r ${i % 2 === 0 ? 'from-surface-strong to-brand-soft rounded-r-2xl' : 'from-brand-deep to-brand rounded-l-2xl'}`}
                       >
                         <Marquee
                           direction={i % 2 === 0 ? 'right' : 'left'}
@@ -381,7 +381,7 @@ const ContainerDepartment: React.FC = () => {
             </>
           )}
 
-          <div className="w-[87%] xl:w-[85%] h-[1px] bg-gradient-to-r from-transparent rounded-full via-[#E19FFF] to-transparent my-20"></div>
+          <div className="w-[87%] xl:w-[85%] h-[1px] bg-gradient-to-r from-transparent rounded-full via-brand-soft to-transparent my-20"></div>
           <div className=" flex flex-col gap-20 items-center w-full relative">
             {/* glass element */}
             <div className=" absolute z-[-2] w-[300px] lg:w-[700px] -left-[10%] lg:-left-[5%] top-[400px] lg:top-[500px] animate-logo-10s">
@@ -391,14 +391,14 @@ const ContainerDepartment: React.FC = () => {
             {/* glass element */}
 
             <div className=" flex flex-col justify-center items-center w-full relative ">
-              <div className=" absolute z-[-1] w-full top-[35%] h-[20px] lg:h-[100px] blur-2xl bg-gradient-to-b from-transparent via-[#D09EFF]/30 to-transparent"></div>
+              <div className=" absolute z-[-1] w-full top-[35%] h-[20px] lg:h-[100px] blur-2xl bg-gradient-to-b from-transparent via-brand-soft/30 to-transparent"></div>
               <div className=" relative flex items-center justify-center">
                 <div className=" absolute z-[1] ">
-                  <h1 className=" font-bold tracking-[8px] lg:tracking-[25px] mt-2 pl-2 md:mt-5 lg:pl-5 bg-[#724E98] text-xs lg:text-4xl text-center">
+                  <h1 className=" font-bold tracking-[8px] lg:tracking-[25px] mt-2 pl-2 md:mt-5 lg:pl-5 bg-brand-muted text-xs lg:text-4xl text-center">
                     PROGRAM KERJA
                   </h1>
                 </div>
-                <h1 className="mt-2 sm:mt-4  text-6xl sm:text-7xl tracking-[2px] lg:text-[12rem] font-extrabold bg-gradient-to-b from-white to-[#5A4A7A] bg-clip-text text-transparent leading-tight text-center uppercase">
+                <h1 className="mt-2 sm:mt-4  text-6xl sm:text-7xl tracking-[2px] lg:text-[12rem] font-extrabold bg-gradient-to-b from-white to-muted-foreground bg-clip-text text-transparent leading-tight text-center uppercase">
                   PROKER
                 </h1>
               </div>
@@ -428,11 +428,11 @@ const ContainerDepartment: React.FC = () => {
                       <div className=" w-[30px] lg:w-[50px] h-full flex flex-col relative">
                         {/* Timeline line */}
                         <div
-                          className={`w-[1px] ${i !== department.work.length - 1 ? 'h-[135%] md:h-[130%] md:hover:h-[120%]' : 'h-[100%] md:hover:h-[90%]'}  left-[50%] -translate-x-[50%] border-r-[1px] border-white group-hover:border-[#873AE3] absolute z-[-1]`}
+                          className={`w-[1px] ${i !== department.work.length - 1 ? 'h-[135%] md:h-[130%] md:hover:h-[120%]' : 'h-[100%] md:hover:h-[90%]'}  left-[50%] -translate-x-[50%] border-r-[1px] border-white group-hover:border-purple-500 absolute z-[-1]`}
                         ></div>
 
                         {/* Icon container */}
-                        <div className="w-full h-[30px] lg:h-[50px] p-2 bg-white duration-[0.5s] group-hover:bg-gradient-to-br from-[#873AE3] via-[#873AE3] to-[#070111] rounded-md">
+                        <div className="w-full h-[30px] lg:h-[50px] p-2 bg-white duration-[0.5s] group-hover:bg-gradient-to-br from-brand via-brand to-black rounded-md">
                           <svg
                             className="w-full h-auto hidden group-hover:block"
                             viewBox="0 0 24 24"
@@ -525,7 +525,7 @@ const ContainerDepartment: React.FC = () => {
                       </div>
 
                       <div
-                        className={`w-[85%] p-4 lg:p-10 bg-[#393054]/30 backdrop-blur-[10px] group-hover:bg-gradient-to-br from-[#873AE3] via-[#873AE3]/80 to-[#070111]/26 rounded-md flex flex-col justify-start gap-5 transition-all duration-[0.5s] hover:shadow-lg cursor-pointer `}
+                        className={`w-[85%] p-4 lg:p-10 bg-gray-500/30 backdrop-blur-[10px] group-hover:bg-gradient-to-br from-brand via-brand/80 to-black/26 rounded-md flex flex-col justify-start gap-5 transition-all duration-[0.5s] hover:shadow-lg cursor-pointer `}
                       >
                         <h1 className="font-bold text-2xl lg:text-4xl  font-nasalization">
                           {/* Dynamic content */}
@@ -737,7 +737,7 @@ const ContainerDepartment: React.FC = () => {
               </svg>
             </div>
           </div>
-          <div className="w-[87%] xl:w-[85%] h-[1px] bg-gradient-to-r from-transparent rounded-full via-[#E19FFF] to-transparent my-20"></div>
+          <div className="w-[87%] xl:w-[85%] h-[1px] bg-gradient-to-r from-transparent rounded-full via-brand-soft to-transparent my-20"></div>
           <div className="w-full px-5 lg:px-32">
             {/* Left column for the heading - full width on small, half on medium and up */}
             <h1 className="font-bold w-full lg:w-1/2 text-3xl lg:text-7xl text-center lg:text-left">
@@ -754,7 +754,7 @@ const ContainerDepartment: React.FC = () => {
                     fill
                     className="object-cover w-full h-full group-hover:scale-[1.1] duration-300 absolute z-[-2]"
                   />
-                  <div className=" w-full h-full flex flex-col justify-end p-5 lg:p-10 bg-gradient-to-t from-[#4A207D]/80 via-[#4A207D]/20 to-black/30">
+                  <div className=" w-full h-full flex flex-col justify-end p-5 lg:p-10 bg-gradient-to-t from-brand-deep/80 via-brand-deep/20 to-black/30">
                     <div className="w-full flex items-center justify-between">
                       <h1 className=" text-white text-2xl lg:text-5xl font-light font-nasalization uppercase">
                         {item.title}

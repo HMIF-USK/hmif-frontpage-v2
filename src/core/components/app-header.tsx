@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { usePathname } from 'next/navigation';
+import ThemeToggle from './theme-toggle';
 const AppHeader: React.FC = () => {
   const [isFocus, setIsfocus] = useState<boolean>(false);
   const [isActiveSection, setIsActiveSection] = useState<number>(1);
@@ -87,7 +88,7 @@ const AppHeader: React.FC = () => {
             width ? 'min-w-[88%] max-w-[88%] sm:min-w-[65%] sm:max-w-[65%]' : 'min-w-32 max-w-40'
           } ${
             height ? 'min-h-[80%] max-h-[80%]' : 'min-h-10 max-h-16'
-          } bg-[#302443]/50 py-4 border-[#873AE3]/60 border-[1.8px] backdrop-blur-[5px]`}
+          } bg-surface-muted/50 py-4 border-brand/60 border-[1.8px] backdrop-blur-[5px]`}
         >
           <div className=" box-border px-7 h-[90%]">
             <ol className={`relative box-border ${listNav ? '' : 'hidden'}`}>
@@ -184,25 +185,25 @@ const AppHeader: React.FC = () => {
           !isScrollDown ? 'top-[3%]' : 'top-[-10%]'
         } z-[151] w-screen h-16 font-poppins font-semibold duration-500`}
       >
-        <ul className="flex justify-evenly items-center  w-[88%] max-w-[1100px] lg:max-w-[800px] 2xl:w-[40%] bg-[#302443]/65 backdrop-blur-[5px] rounded-[12px] text-white font-semibold text-[12px] tracking-wide px-4 py-3 lg:text-sm">
+        <ul className="flex justify-evenly items-center  w-[88%] max-w-[1100px] lg:max-w-[800px] 2xl:w-[40%] bg-surface-muted/65 backdrop-blur-[5px] rounded-[12px] text-white font-semibold text-[12px] tracking-wide px-4 py-3 lg:text-sm">
           <li>
             <Link
               href={'/home'}
               onClick={() => setIsActiveSection(1)}
               onMouseOver={() => setListHover(1)}
               onMouseOut={() => setListHover(0)}
-              className="bg-[#302443] flex justify-center items-center sm:min-w-[90px] md:min-w-[140px] 2xl:min-w-[100px] 2xl:max-w-[150px] w-[4vw] h-[45px] text-center rounded-[10px] leading-[45px] relative"
+              className="bg-surface-muted flex justify-center items-center sm:min-w-[90px] md:min-w-[140px] 2xl:min-w-[100px] 2xl:max-w-[150px] w-[4vw] h-[45px] text-center rounded-[10px] leading-[45px] relative"
             >
               {pathname === '/home' ? (
                 <h1
-                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[#302443]`}
+                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-surface-muted`}
                 >
                   Home
                 </h1>
               ) : (
                 <h1
                   className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ${
-                    listHover === 1 ? 'text-[#302443]' : 'text-white'
+                    listHover === 1 ? 'text-surface-muted' : 'text-white'
                   }`}
                 >
                   Home
@@ -226,18 +227,18 @@ const AppHeader: React.FC = () => {
               onClick={() => setIsActiveSection(2)}
               onMouseOver={() => setListHover(2)}
               onMouseOut={() => setListHover(0)}
-              className="bg-[#302443] flex justify-center items-center sm:min-w-[90px] md:min-w-[140px] 2xl:min-w-[100px] 2xl:max-w-[150px] w-[4vw] h-[45px] text-center rounded-[10px] leading-[45px] relative"
+              className="bg-surface-muted flex justify-center items-center sm:min-w-[90px] md:min-w-[140px] 2xl:min-w-[100px] 2xl:max-w-[150px] w-[4vw] h-[45px] text-center rounded-[10px] leading-[45px] relative"
             >
               {pathname.includes('event') ? (
                 <h1
-                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[#302443]`}
+                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-surface-muted`}
                 >
                   Event
                 </h1>
               ) : (
                 <h1
                   className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ${
-                    listHover === 2 ? 'text-[#302443]' : 'text-white'
+                    listHover === 2 ? 'text-surface-muted' : 'text-white'
                   }`}
                 >
                   Event
@@ -261,18 +262,18 @@ const AppHeader: React.FC = () => {
               onClick={() => setIsActiveSection(3)}
               onMouseOver={() => setListHover(3)}
               onMouseOut={() => setListHover(0)}
-              className="bg-[#302443] flex justify-center items-center sm:min-w-[90px] md:min-w-[140px] 2xl:min-w-[100px] 2xl:max-w-[150px] w-[4vw] h-[45px] text-center rounded-[10px] leading-[45px] relative"
+              className="bg-surface-muted flex justify-center items-center sm:min-w-[90px] md:min-w-[140px] 2xl:min-w-[100px] 2xl:max-w-[150px] w-[4vw] h-[45px] text-center rounded-[10px] leading-[45px] relative"
             >
               {pathname.includes('merch') ? (
                 <h1
-                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[#302443]`}
+                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-surface-muted`}
                 >
                   Merch
                 </h1>
               ) : (
                 <h1
                   className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ${
-                    listHover === 3 ? 'text-[#302443]' : 'text-white'
+                    listHover === 3 ? 'text-surface-muted' : 'text-white'
                   }`}
                 >
                   Merch
@@ -296,18 +297,18 @@ const AppHeader: React.FC = () => {
               onClick={() => setIsActiveSection(4)}
               onMouseOver={() => setListHover(4)}
               onMouseOut={() => setListHover(0)}
-              className="bg-[#000427] flex justify-center items-center sm:min-w-[90px] md:min-w-[140px] 2xl:min-w-[100px] 2xl:max-w-[150px] w-[4vw] h-[45px] text-center rounded-[10px] leading-[45px] relative"
+              className="bg-background flex justify-center items-center sm:min-w-[90px] md:min-w-[140px] 2xl:min-w-[100px] 2xl:max-w-[150px] w-[4vw] h-[45px] text-center rounded-[10px] leading-[45px] relative"
             >
               {windowObject.location.pathname.includes("article") ? (
                 <h1
-                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[#000427]`}
+                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-background`}
                 >
                   Article
                 </h1>
               ) : (
                 <h1
                   className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ${
-                    listHover === 4 ? "text-[#000427]" : "text-white"
+                    listHover === 4 ? "text-background" : "text-white"
                   }`}
                 >
                   Article
@@ -335,18 +336,18 @@ const AppHeader: React.FC = () => {
               onClick={() => setIsActiveSection(5)}
               onMouseOver={() => setListHover(5)}
               onMouseOut={() => setListHover(0)}
-              className="bg-[#302443] flex justify-center items-center min-w-[120px] md:min-w-[140px] h-[45px] text-center rounded-[10px] leading-[45px] relative"
+              className="bg-surface-muted flex justify-center items-center min-w-[120px] md:min-w-[140px] h-[45px] text-center rounded-[10px] leading-[45px] relative"
             >
               {pathname.includes('achievement') ? (
                 <h1
-                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[#302443]`}
+                  className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-surface-muted`}
                 >
                   Achievement
                 </h1>
               ) : (
                 <h1
                   className={`text-[100%] absolute z-[160] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ${
-                    listHover === 5 ? 'text-[#302443]' : 'text-white'
+                    listHover === 5 ? 'text-surface-muted' : 'text-white'
                   }`}
                 >
                   Achievement
@@ -364,6 +365,7 @@ const AppHeader: React.FC = () => {
               )}
             </Link>
           </li>
+          <ThemeToggle />
         </ul>
       </div>
     </div>

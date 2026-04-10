@@ -345,7 +345,7 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
       <div className="w-[80%] lg:w-[85%] flex items-center justify-start">
         <div
           onClick={() => navigation.back()}
-          className="flex items-center gap-2 bg-[#302443]/20 backdrop-blur-2xl rounded-full py-2 px-5 lg:px-8 cursor-pointer"
+          className="flex items-center gap-2 bg-surface-muted/20 backdrop-blur-2xl rounded-full py-2 px-5 lg:px-8 cursor-pointer"
         >
           <ArrowLeft size={20} color="white" />
           <h1>Kembali</h1>
@@ -360,17 +360,17 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
             fill
             className="w-full h-full object-cover absolute z-[-1]"
           />
-          <div className="w-full h-full p-5 lg:p-10 bg-gradient-to-t from-[#4A207D] via-[#4A207D]/20 to-transparent flex items-end justify-start">
+          <div className="w-full h-full p-5 lg:p-10 bg-gradient-to-t from-brand-deep via-brand-deep/20 to-transparent flex items-end justify-start">
             <h1 className="w-full font-semibold text-2xl lg:text-5xl font-nasalization">
               {data.title}
             </h1>
           </div>
         </div>
         <div className=" w-full h-full flex flex-col justify-between gap-10">
-          <div className="w-full flex-col flex  p-4 lg:p-7 items-start gap-4 lg:gap-9 rounded-2xl bg-gradient-to-r from-[#534081] via-[#77679F]/20 to-transparent border-1 border-[#534081]/80">
+          <div className="w-full flex-col flex  p-4 lg:p-7 items-start gap-4 lg:gap-9 rounded-2xl bg-gradient-to-r from-surface-strong via-border/20 to-transparent border-1 border-surface-strong/80">
             <h1 className=" font-bold text-2xl">Penyelenggara</h1>
             <div className="flex w-full justify-between items-center">
-              <div className="w-[50px] h-[50px] lg:w-[61px] lg:h-[61px] rounded-full bg-gradient-to-b from-[#4A207D] to-[#873AE3] flex items-center justify-center">
+              <div className="w-[50px] h-[50px] lg:w-[61px] lg:h-[61px] rounded-full bg-gradient-to-b from-brand-deep to-brand flex items-center justify-center">
                 <Scan size={25} color="white" />
               </div>
               <div className="w-[78%] lg:w-[82%] flex flex-col items-start gap-1">
@@ -379,14 +379,14 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
               </div>
             </div>
           </div>
-          <div className="w-full h-[400px] p-4 lg:p-7  rounded-2xl bg-gradient-to-r from-[#534081] via-[#77679F]/20 to-transparent border-1 border-[#534081]/80">
+          <div className="w-full h-[400px] p-4 lg:p-7  rounded-2xl bg-gradient-to-r from-surface-strong via-border/20 to-transparent border-1 border-surface-strong/80">
             <h1 className="font-bold text-2xl">Event Lainnya</h1>
-            <div className=" w-full h-[80%] mt-5 overflow-x-hidden flex flex-col gap-7 scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-[#911dec] scrollbar-track-transparent">
+            <div className=" w-full h-[80%] mt-5 overflow-x-hidden flex flex-col gap-7 scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-primary scrollbar-track-transparent">
               {nextAchievement.map((event: IArticle, i: number) => {
                 return (
                   <Link
                     href={`/achievement/${event.slug}`}
-                    className="flex w-full justify-between items-center p-5 bg-gradient-to-r  from-[#873AE3] to-[#4A207D] rounded-2xl "
+                    className="flex w-full justify-between items-center p-5 bg-gradient-to-r  from-brand to-brand-deep rounded-2xl "
                   >
                     <div className="w-[50px] h-[50px] lg:w-[61px] lg:h-[61px] rounded-xl relative ">
                       <Image
@@ -410,8 +410,8 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
         </div>
       </div>
 
-      <div className="w-[80%] lg:w-[85%] grid grid-cols-1 lg:grid-cols-3 p-4 lg:p-7 bg-[#332A55]/30 border-[2px] border-[#77679F]/50 rounded-2xl gap-10">
-        <div className=" w-full py-12 px-7 lg:px-10 rounded-2xl overflow-hidden bg-gradient-to-br from-[#390676] via-[#6A04E4] to-[#6A04E4] flex justify-end items-center relative z-0">
+      <div className="w-[80%] lg:w-[85%] grid grid-cols-1 lg:grid-cols-3 p-4 lg:p-7 bg-gray-800/30 border-[2px] border-border/50 rounded-2xl gap-10">
+        <div className=" w-full py-12 px-7 lg:px-10 rounded-2xl overflow-hidden bg-gradient-to-br from-brand-deep via-brand to-brand flex justify-end items-center relative z-0">
           <div className=" absolute z-[-1] left-0">
             <svg
               width="85"
@@ -445,7 +445,7 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
             <h1 className="text-base lg:text-lg mt-3">{data.tanggal}</h1>
           </div>
         </div>
-        <div className=" w-full py-12 px-7 lg:px-10 rounded-2xl overflow-hidden bg-gradient-to-br from-[#390676] via-[#6A04E4] to-[#6A04E4] flex justify-end items-center relative z-0">
+        <div className=" w-full py-12 px-7 lg:px-10 rounded-2xl overflow-hidden bg-gradient-to-br from-brand-deep via-brand to-brand flex justify-end items-center relative z-0">
           <div className="absolute z-[-1] inset-0">
             <svg
               width="96"
@@ -495,7 +495,7 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
             <h1 className="text-base lg:text-lg mt-3">{data.lokasi}</h1>
           </div>
         </div>
-        <div className=" w-full py-12 px-7 lg:px-10 rounded-2xl overflow-hidden bg-gradient-to-br from-[#390676] via-[#6A04E4] to-[#6A04E4] flex justify-end items-center relative z-0">
+        <div className=" w-full py-12 px-7 lg:px-10 rounded-2xl overflow-hidden bg-gradient-to-br from-brand-deep via-brand to-brand flex justify-end items-center relative z-0">
           <div className="z-[-1] absolute left-0 bottom-0">
             <svg
               width="105"
@@ -547,8 +547,8 @@ const ArticleSection: React.FC<IArticleSectionProps> = ({ data }) => {
         </div>
       </div>
 
-      <div className="w-[80%] lg:w-[85%] flex flex-col items-center lg:items-start gap-10 p-4 lg:p-7 bg-gradient-to-r from-[#332A55] to-[#8547F6]/20 border-[2px] border-[#77679F]/50 rounded-2xl backdrop-blur-2xl">
-        <h1 className="py-3 px-10 font-semibold text-xl lg:text-2xl rounded-full bg-gradient-to-r from-[#4A207D] via-[#873AE3] to-[#873AE3]">
+      <div className="w-[80%] lg:w-[85%] flex flex-col items-center lg:items-start gap-10 p-4 lg:p-7 bg-gradient-to-r from-surface-strong to-brand/20 border-[2px] border-border/50 rounded-2xl backdrop-blur-2xl">
+        <h1 className="py-3 px-10 font-semibold text-xl lg:text-2xl rounded-full bg-gradient-to-r from-brand-deep via-brand to-brand">
           Deskripsi Event
         </h1>
         {data.deskripsi.map((item: string, i: number) => {

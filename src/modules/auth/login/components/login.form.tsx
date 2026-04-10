@@ -95,16 +95,16 @@ export default function LoginForm() {
           </Button>
 
           <div className="grid grid-cols-7 items-center mb-4">
-            <hr className="col-span-3 border-t border-black" />
-            <p className="col-span-1 text-center text-black">Or</p>
-            <hr className="col-span-3 border-t border-black" />
+            <hr className="col-span-3 border-t border-border" />
+            <p className="col-span-1 text-center text-white">Or</p>
+            <hr className="col-span-3 border-t border-border" />
           </div>
 
           <Button
             type="button"
             variant="outline"
             className={cn(
-              'text-sm font-light flex flex-row gap-2 bg-inherit text-gray-900 w-full h-10'
+              'text-sm font-light flex flex-row gap-2 bg-inherit text-white w-full h-10'
             )}
             disabled={isLoading}
           >
@@ -115,7 +115,7 @@ export default function LoginForm() {
       </CardContent>
 
       <CardFooter className={cn('flex items-center justify-center text-xs')}>
-        <p className="text-gray-500">Don&apos;t have an account?</p>
+        <p className="text-muted-foreground">Don&apos;t have an account?</p>
         <Link href="/auth/register" className="text-primary font-normal pl-1">
           Sign up
         </Link>

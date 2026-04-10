@@ -7,7 +7,7 @@
 //   return (
 //     <div
 //       className={
-//         'bg-gradient-to-r from-white/30 to-[#332A55]/80 flex justify-center p-[1rem] rounded-md flex-col w-[17vw]'
+//         'bg-gradient-to-r from-white/30 to-surface-strong/80 flex justify-center p-[1rem] rounded-md flex-col w-[17vw]'
 //       }
 //     >
 //       <h1 className="font-semibold">{data.title}</h1>

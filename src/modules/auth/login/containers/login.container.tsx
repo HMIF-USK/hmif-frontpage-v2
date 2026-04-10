@@ -7,7 +7,7 @@ export default function LoginContainer() {
       <div className="hidden lg:block">
         <LoginContent />
       </div>
-      <div className="flex items-center justify-center p-6 bg-gradient-to-r from-inherit to-purple-500">
+      <div className="flex items-center justify-center p-6 bg-gradient-to-r from-inherit to-brand">
         <LoginForm />
       </div>
     </div>

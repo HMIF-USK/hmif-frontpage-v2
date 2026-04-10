@@ -100,7 +100,7 @@ export async function authValidator() {
   const token = session?.token;
 
   if (!token) {
-    await authService.deleteSession();
+    await deleteSession();
 
     return false;
   }
@@ -108,7 +108,7 @@ export async function authValidator() {
   const isValid = await authService.verifyToken(token);
 
   if (isValid.data === null) {
-    await authService.deleteSession();
+    await deleteSession();
 
     return false;
   }

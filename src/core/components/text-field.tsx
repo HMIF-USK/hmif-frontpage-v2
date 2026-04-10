@@ -58,11 +58,11 @@ const TextField = forwardRef<HTMLInputElement, InputBaseProps>(
           <>
             <button
               className={cn(
-                'w-full py-3 pr-4 rounded-lg border-2 transition-colors duration-300 bg-white text-gray-950 max-h-[48px] text-start',
+                'w-full py-3 pr-4 rounded-lg border-2 transition-colors duration-300 bg-white text-white max-h-[48px] text-start',
                 !startIcon ? 'pl-4' : endIcon && !startIcon ? 'pl-4' : 'pl-10',
-                error ? 'border-red-500' : 'border-gray-100 focus:border-purple-500',
+                error ? 'border-red-500' : 'border-border focus:border-purple-500',
                 inputClassName,
-                file ? 'text-gray-950' : 'text-gray-400'
+                file ? 'text-white' : 'text-muted-foreground'
               )}
               disabled={disabled}
               onClick={() => document.getElementById(id || 'file')?.click()}
@@ -94,9 +94,9 @@ const TextField = forwardRef<HTMLInputElement, InputBaseProps>(
         return (
           <textarea
             className={cn(
-              'w-full py-3 pr-4 rounded-lg focus:outline-none border-2 transition-colors duration-300 bg-white text-gray-950',
+              'w-full py-3 pr-4 rounded-lg focus:outline-none border-2 transition-colors duration-300 bg-white text-white',
               !startIcon ? 'pl-4' : endIcon && !startIcon ? 'pl-4' : 'pl-10',
-              error ? 'border-red-500' : 'border-gray-100 focus:border-purple-500',
+              error ? 'border-red-500' : 'border-border focus:border-purple-500',
               inputClassName,
               'max-h-none'
             )}
@@ -118,10 +118,10 @@ const TextField = forwardRef<HTMLInputElement, InputBaseProps>(
         <input
           type={inputType}
           className={cn(
-            'w-full py-3 rounded-lg focus:outline-none border-2 transition-colors duration-300 bg-white text-gray-950 max-h-[48px]',
+            'w-full py-3 rounded-lg focus:outline-none border-2 transition-colors duration-300 bg-white text-white max-h-[48px]',
             !startIcon ? 'pl-4' : endIcon && !startIcon ? 'pl-4' : 'pl-10',
             type === 'password' ? 'pr-12' : 'pr-4',
-            error ? 'border-red-500' : 'border-gray-100 focus:border-purple-500',
+            error ? 'border-red-500' : 'border-border focus:border-purple-500',
             inputClassName
           )}
           placeholder={placeholder}
@@ -162,7 +162,7 @@ const TextField = forwardRef<HTMLInputElement, InputBaseProps>(
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-gray-400 hover:text-gray-600"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-muted-foreground hover:text-muted-foreground"
             >
               <Icon icon={showPassword ? 'lucide:eye-off' : 'akar-icons:eye'} className="size-5" />
             </button>
